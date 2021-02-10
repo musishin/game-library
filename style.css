@@ -1,0 +1,782 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(32, 32, 32);
+    font-family: 'Galatea Light', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+#main-container {
+    z-index: 2;
+    width: 1200px;
+    max-width: 1200px;
+    height: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#main-container-patch {
+    z-index: 2;
+    width: 1200px;
+    max-width: 1200px;
+    height: auto;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    width: 100%;
+    min-height: 45px;
+    background-color: rgb(32, 32, 32);
+    color: rgb(242, 157, 22);
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.form-toggle-none {
+    display: none;
+}
+
+.form-toggle-flex {
+    display: flex;
+}
+
+.tab-toggle-none {
+    color: white;
+}
+
+.tab-toggle-text {
+    color: rgb(242, 157, 22);
+}
+
+.display-none {
+    display: none;
+}
+
+
+
+/* Page title bar */
+
+#title-background {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    min-width: 1200px;
+    width: 100%;
+    height: 140px;
+    background-color: rgb(79, 79, 92);
+    box-shadow: 0px 1px 6px rgb(32, 32, 32);
+}
+
+#top-title-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#img-title-container {
+    display: flex;
+    align-items: center;
+}
+
+#top-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#page-title {
+    width: 100%;
+    min-height: 60px;
+    font-size: 40px;
+    font-family: 'Galatea Light', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 80px;
+    color: white;
+    z-index: 2;
+}
+
+#icon-img {
+    height: 60px;
+    width: auto;
+    margin-right: 10px;
+}
+
+#add-button {
+    border-radius: 8px;
+    height: 25px;
+    width: 60px;
+    background-color: rgb(242, 157, 22);
+    cursor: pointer;
+    font-size: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#sign-button {
+    border-radius: 8px;
+    height: 25px;
+    width: 70px;
+    background-color: rgb(242, 157, 22);
+    cursor: pointer;
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+#sign-out-button {
+    border-radius: 8px;
+    height: 25px;
+    width: 80px;
+    background-color: rgb(242, 157, 22);
+    cursor: pointer;
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#user-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 45px;
+    background-image: none;
+    background-size: 100%;
+    margin-left: 0px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#search-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 15px;
+}
+
+#search {
+    border-radius: 6px;
+    width: 300px;
+    color: black;
+    background: rgb(230, 230, 230);
+    margin-right: 10px;
+}
+
+
+
+/* Card buttons */
+
+.delete-btn {
+    width: 22px;
+    height: 22px;
+    font-size: 11px;
+    color: black;
+    padding: 4px;
+    background-color: rgb(242, 157, 22);
+}
+
+.delete-btn:hover {
+    cursor: pointer;
+    background-color: white;
+}
+
+.edit-button {
+    width: 50px;
+    height: 22px;
+    font-size: 11px;
+    color: black;
+    padding: 4px;
+    background-color: rgb(242, 157, 22);
+    margin-right: 3px;
+}
+
+.edit-button:hover {
+    cursor: pointer;
+}
+
+
+
+/* Form */
+
+#form-title {
+    font-size: 23px;
+    margin: 0px 0px 10px 0px;
+    justify-content: space-between;
+    color: white;
+}
+
+#form-container {
+    width: 1200px;
+    min-height: 230px;
+    margin: 0px 0px 50px 0px;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(79, 79, 92);
+}
+
+#form-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-input-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+.form-element {
+    width: 250px;
+}
+
+.form-element-margin {
+    margin: 0px 25px 0px 25px;
+}
+
+label {
+    color: white;
+}
+
+input {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+    font-size: 14px;
+    font-family: 'Galatea Regular', sans-serif;
+    width: 250px;
+    height: 27px;
+    padding-left: 10px;
+    background: rgb(230, 230, 230);
+    border-radius: 6px;
+}
+
+.select-div {
+    position: relative;
+    float: left;
+    height: 27px;
+}
+
+.select-div::after {
+    content: '>';
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    right: 12px;
+    top: 3px;
+    position: absolute;
+    color: rgb(78, 78, 78);
+    font-family: 'Galatea Regular', sans-serif;
+}
+
+.select-div select {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    width: 250px;
+    height: 27px;
+    padding: 0 0 0 10px;
+    font-size: 13px;
+    color: rgb(82, 82, 82);
+    background: rgb(230, 230, 230);
+    border-radius: 6px;
+}
+
+button {
+    height: 40px;
+    width: 120px;
+    background: rgb(230, 230, 230);
+    border: none;
+    border-radius: 5px;
+    font-family: 'Galatea Regular', sans-serif;
+}
+
+#submit:hover {
+    cursor: pointer;
+    background-color: white;
+}
+
+#submit {
+    background-color: rgb(242, 157, 22);
+    transition: all 1s;
+}
+
+
+
+/* Edit form */
+
+#edit-form-title {
+    font-size: 23px;
+    margin: 0px 0px 10px 0px;
+    justify-content: space-between;
+    align-items: flex-end;
+    color: white;
+}
+
+#edit-form-container {
+    width: 1200px;
+    min-height: 230px;
+    margin: 0px 0px 50px 0px;
+    border-radius: 10px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(79, 79, 92);
+}
+
+.edit-form-input-container {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+
+#edit-submit:hover {
+    cursor: pointer;
+    background-color: white;
+}
+
+#edit-submit {
+    background-color: rgb(242, 157, 22);
+}
+
+
+
+/* Game list */
+
+#game-container-title {
+    font-size: 23px;
+    margin: 0px 0px 10px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#games-container {
+    width: 1210px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0px 0px 10px 0px;
+}
+
+#title-tab-div {
+    display: flex;
+    color: white;
+    align-items: flex-end;
+}
+
+#title-tab-div button {
+    height: auto;
+    font-size: 13px;
+    width: auto;
+    border: none;
+    box-shadow: none;
+    background-color: rgb(32, 32, 32);
+    margin: 0 2px 0 2px;
+    cursor: pointer;
+}
+
+
+
+/* Game cards */
+
+.game-square {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(79, 79, 92);
+    width: 373px;
+    height: 85px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0px 10px 10px 0px;
+    color: white;
+}
+
+.game-info-container {
+    white-space: pre-line;
+    font-size: 13px;
+    position: relative;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+}
+
+.first-info-container {
+    margin-right: 40px;
+}
+
+.title-delete-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-title-container {
+    width: 300px;
+    height: 22px;
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.game-delete-menu-container {
+    display: flex;
+    position: relative;
+}
+
+
+
+/* Game stats */
+
+#game-stat-div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#total-hours-div {
+    color: white;
+    padding-left: 10px;
+}
+
+#total-games-div {
+    color: white;
+    padding-right: 10px;
+}
+
+
+
+/* Delete confirmation */
+
+#delete-conf-background {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.459);
+    z-index: 5;
+}
+
+#delete-conf-div {
+    border-radius: 10px;
+    background-color: rgb(79, 79, 92);
+    height: 150px;
+    width: 60%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -75px;
+    margin-left: -30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#delete-conf-titlebar {
+    width: 90%;
+    height: 20%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+#delete-conf-title {
+    font-size: 14px;
+}
+
+#delete-conf-close {
+    font-size: 12px;
+    width: 60px;
+    height: 20px;
+    margin-top: 25px;
+    background-color: rgb(79, 79, 92);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#delete-conf-btn-div {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#delete-conf-btn {
+    width: 120px;
+    height: 40px;
+    background-color: lightcoral;
+    color: black;
+    border: none;
+    border-radius: 10px;
+}
+
+
+
+/* Patch Notes Page */
+
+.patch-div {
+    color: white;
+    margin: 0px 15px 30px 15px;
+}
+
+.patch-title {
+    font-size: 28px;
+    height: 80px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.patch-date {
+    font-size: 13px;
+    color: rgb(242, 157, 22);
+}
+
+.patch-notes {
+    font-size: 15px;
+    margin-bottom: 30px;
+}
+
+#go-back-link {
+    font-size: 15px;
+    color: rgb(242, 157, 22);
+    margin: 0 15px 0 15px;
+}
+
+
+
+/* ##### Responsive Web ##### */
+@media screen and (max-width: 1200px) {
+    #page-title {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    body {
+        margin: 110px 0 0 0;
+    }
+    
+    #main-container {
+        margin-top: 0;
+        width: 100%;
+        align-items: center;
+    }
+
+    #main-container-patch {
+        margin-top: -110px;
+        width: 100%;
+    }
+
+    #title-background {
+        display: none;
+    }
+
+    #title-background-patch {
+        display: none;
+    }
+
+    #page-title {
+        width: 100%;
+        height: 80px;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        position: fixed;
+        top: 0;
+        padding: 10px 0px 10px 0px;
+        background-color: rgb(79, 79, 92);
+        box-shadow: 0px 1px 6px rgb(32, 32, 32);
+    }
+
+    #title-span {
+        font-size: 28px;
+        margin-left: 10px;
+    }
+
+    #img-title-container {
+        width: auto;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #icon-img {
+        display: none;
+        height: 50px;
+        margin-left: 10px;
+    }
+
+    #sign-out-button {
+        margin-right: 0;
+        font-size: 13px;
+    }
+
+    #sign-button {
+        margin-right: 15px;
+        font-size: 13px;
+    }
+
+    #user-img {
+        margin-right: 10px;
+    }
+
+    #search-form {
+        justify-content: center;
+    }
+
+    #search {
+        width: 80%;
+        margin-left: 10px;
+    }
+
+    #add-button {
+        margin-right: 10px;
+        font-size: 13px;
+    }
+
+    #form-container {
+        width: 100%;
+        min-height: 460px;
+        height: 460px;
+        flex-direction: column;
+        justify-content: space-evenly;
+        border-radius: 0;
+    }
+
+    #form-title {
+        justify-content: center;
+        width: 95%;
+    }
+
+    #form-input-container {
+        flex-direction: column;
+    }
+
+    .form-input-row {
+        flex-direction: column;
+        margin-bottom: 0;
+    }
+
+    .form-element {
+        margin: 0px 25px 25px 25px;
+        font-weight: lighter;
+        width: 300px;
+    }
+
+    .form-element-margin-row-two {
+        margin: 0 0 6px 0;
+    }
+
+    input {
+        width: 300px;
+    }
+
+    #edit-form-title {
+        font-size: 18px;
+        width: 95%;
+        max-width: 95%;
+    }
+
+    #edit-form-container {
+        width: 100%;
+        min-height: 420px;
+        height: 420px;
+        border-radius: 0;
+    }
+
+    .edit-form-input-container {
+        flex-direction: column;
+        margin-bottom: 0;
+        align-items: center;
+    }
+
+    .select-div select {
+        width: 300px;
+    }
+
+    #submit {
+        margin-top: 10px;
+        margin-right: 0;
+        background-color: rgb(242, 157, 22);
+    }
+
+    #game-container-title {
+        display: flex;
+        justify-content: center;
+        width: 95%;
+    }
+
+    #title-tab-div {
+        justify-content: center;
+    }
+
+    #title-tab-div span{
+        display: none;
+    }
+
+    #title-tab-div button {
+        margin: 0 3px 0 3px;
+    }
+
+    #games-container {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    .game-square {
+        width: 100%;
+        margin: 0px 0px 10px 0px;
+        border-radius: 0;
+        min-width: 50px;
+        background-color: rgb(79, 79, 92);
+    }
+
+    .patch-div {
+        margin: 0px 15px 0 15px;
+    }
+
+    #go-back-link {
+        margin: 0 15px 0px 15px;
+    }
+}

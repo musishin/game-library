@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTC-8" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="images/icon-book.png">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+        <link rel="manifest" href="manifest.webmanifest">
+        <style>
+            @font-face {
+            font-family: 'Galatea Regular';
+            font-style: normal;
+            font-weight: 100;
+            src: local('Galatea Regular'), url('fonts/Galatea Regular Regular.woff') format('woff');
+            }
+
+            @font-face {
+            font-family: 'Galatea Light';
+            font-style: normal;
+            font-weight: normal;
+            src: local('Galatea Light'), url('fonts/Galatea Regular Light.woff') format('woff');
+            }
+        </style>
+    </head>
+    <body>
+        <div id="title-background"></div>
+        <div id="main-container">
+            <div id="page-title">
+                <div id="top-title-container">
+                    <div id="img-title-container">
+                        <img src="images/icon-book.png" id="icon-img">
+                        <span id="title-span"><a href="index.html">Game Library</a></span>
+                    </div>
+                    <div id="top-button-container">
+                        <button type="button" id="sign-button" class="" onclick="googleSignIn()">Sign In</button>
+                        <button type="button" id="sign-out-button" class="display-none" onclick="googleSignOut()">Sign Out</button>
+                        <div id="user-img" class=""></div>
+                    </div>
+                </div>
+                <div id="search-form">
+                    <input type="text" id="search" name="search" placeholder="Search">
+                    <button type="button" id="add-button" onclick="goToTop()">+Add</button>
+                </div>
+            </div>
+
+
+
+            <!--Edit form-->
+            <div id="edit-form-title" class="form-toggle-none">
+                <span id="edit-title-span"></span>
+                <button id="edit-close-btn" class="delete-btn">X</button>
+            </div>
+            <form id="edit-form-container" class="form-toggle-none">
+                <div class="edit-input-container">
+                    <!--First row-->
+                    <div class="edit-form-input-container">
+                        <div class="form-element form-element-margin select-div">
+                            <select name="edit-genre" id="edit-genre">
+                                <option value="" selected>Genre</option>
+                                <option value="Action">Action</option>
+                                <option value="Action RPG">Action RPG</option>
+                                <option value="Action Adventure">Action Adventure</option>
+                                <option value="Platformer">Platformer</option>
+                                <option value="Shooter">Shooter</option>
+                                <option value="Beat 'Em Up">Beat 'Em Up</option>
+                                <option value="Fighting">Fighting</option>
+                                <option value="Survival">Survival</option>
+                                <option value="Survival Horror">Survival Horror</option>
+                                <option value="Horror">Horror</option>
+                                <option value="Stealth">Stealth</option>
+                                <option value="Battle Royale">Battle Royale</option>
+                                <option value="Rhythm">Rhythm</option>
+                                <option value="Metroidvania">Metroidvania</option>
+                                <option value="Visual Novel">Visual Novel</option>
+                                <option value="JRPG">JRPG</option>
+                                <option value="RPG">RPG</option>
+                                <option value="MMORPG">MMORPG</option>
+                                <option value="Roguelike">Roguelike</option>
+                                <option value="Simulation">Simulation</option>
+                                <option value="Puzzle">Puzzle</option>
+                                <option value="Tactics">Tactics</option>
+                                <option value="Real-time Strategy">Real-time Strategy</option>
+                                <option value="Turn-based Strategy">Turn-based Strategy</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Racing">Racing</option>
+                                <option value="Tabletop">Tabletop</option>
+                                <option value="Open World">Open World</option>
+                            </select>
+                        </div>
+                        <div class="form-element form-element-margin select-div">
+                            <select name="edit-platform" id="edit-platform">
+                                <option value="" selected>Platform</option>
+                                <option value="Switch">Switch</option>
+                                <option value="PS5">PS5</option>
+                                <option value="Xbox X">Xbox X</option>
+                                <option value="PC">PC</option>
+                                <option value="PS4">PS4</option>
+                                <option value="Xbox One">Xbox One</option>
+                                <option value="Mobile">Mobile</option>
+                                <option value="GBA">GBA</option>
+                                <option value="SNES">SNES</option>
+                                <option value="DS">DS</option>
+                                <option value="3DS">3DS</option>
+                                <option value="PSP">PSP</option>
+                                <option value="Vita">Vita</option>
+                            </select>
+                        </div>
+                        <div class="form-element form-element-margin select-div">
+                            <select name="edit-status" id="edit-status">
+                                <option value="" selected>Status</option>
+                                <option value="Now Playing">Now Playing</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Waitlist">Waitlist</option>
+                                <option value="Dropped">Dropped</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!--Second row-->
+                    <div class="edit-form-input-container">
+                        <div class="form-element form-element-margin form-element-margin-row-two">
+                            <input type="text" id="edit-hours" name="edit-hours" placeholder="Hours Played">
+                        </div>
+                        <div class="form-element form-element-margin form-element-margin-row-two">
+                            <label for="edit-start-date">Start Date</label>
+                            <input type="date" id="edit-start-date" name="edit-start-date">
+                        </div>
+                        <div class="form-element form-element-margin form-element-margin-row-two">
+                            <label for="edit-end-date">End Date</label>
+                            <input type="date" id="edit-end-date" name="edit-end-date">
+                        </div>
+                    </div>
+                </div>
+                <button type="button" id="edit-submit">Submit</button>
+            </form>
+
+            <!--Add game form-->
+            <div id="form-title" class="form-toggle-none">Add a New Game</div>
+            <form id="form-container" class="form-toggle-none">
+                <div id="form-input-container">
+                    <div class="form-input-row">
+                        <div class="form-element form-element-margin">
+                            <input type="text" id="title" name="title" placeholder="Title">
+                        </div>
+                        <div class="form-element form-element-margin select-div">
+                            <select name="genre" id="genre">
+                                <option value="" selected>Genre</option>
+                                <option value="Action">Action</option>
+                                <option value="Action RPG">Action RPG</option>
+                                <option value="Action Adventure">Action Adventure</option>
+                                <option value="Platformer">Platformer</option>
+                                <option value="Shooter">Shooter</option>
+                                <option value="Beat 'Em Up">Beat 'Em Up</option>
+                                <option value="Fighting">Fighting</option>
+                                <option value="Survival">Survival</option>
+                                <option value="Survival Horror">Survival Horror</option>
+                                <option value="Horror">Horror</option>
+                                <option value="Stealth">Stealth</option>
+                                <option value="Battle Royale">Battle Royale</option>
+                                <option value="Rhythm">Rhythm</option>
+                                <option value="Metroidvania">Metroidvania</option>
+                                <option value="Visual Novel">Visual Novel</option>
+                                <option value="JRPG">JRPG</option>
+                                <option value="RPG">RPG</option>
+                                <option value="MMORPG">MMORPG</option>
+                                <option value="Roguelike">Roguelike</option>
+                                <option value="Simulation">Simulation</option>
+                                <option value="Puzzle">Puzzle</option>
+                                <option value="Tactics">Tactics</option>
+                                <option value="Real-time Strategy">Real-time Strategy</option>
+                                <option value="Turn-based Strategy">Turn-based Strategy</option>
+                                <option value="Sports">Sports</option>
+                                <option value="Racing">Racing</option>
+                                <option value="Tabletop">Tabletop</option>
+                                <option value="Open World">Open World</option>
+                            </select>
+                        </div>
+                        <div class="form-element form-element-margin select-div">
+                            <select name="platform" id="platform">
+                                <option value="" selected>Platform</option>
+                                <option value="Switch">Switch</option>
+                                <option value="PS5">PS5</option>
+                                <option value="Xbox X">Xbox X</option>
+                                <option value="PC">PC</option>
+                                <option value="PS4">PS4</option>
+                                <option value="Xbox One">Xbox One</option>
+                                <option value="Mobile">Mobile</option>
+                                <option value="GBA">GBA</option>
+                                <option value="SNES">SNES</option>
+                                <option value="DS">DS</option>
+                                <option value="3DS">3DS</option>
+                                <option value="PSP">PSP</option>
+                                <option value="Vita">Vita</option>
+                            </select>
+                        </div>
+                        <div class="form-element form-element-margin select-div">
+                            <select name="status" id="status">
+                                <option value="" selected>Status</option>
+                                <option value="Now Playing">Now Playing</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Waitlist">Waitlist</option>
+                                <option value="Dropped">Dropped</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-input-row">
+                        <div class="form-element form-element-margin form-element-margin-row-two">
+                            <input type="text" id="hours" name="hours" placeholder="Hours Played">
+                        </div>
+                        <div class="form-element form-element-margin form-element-margin-row-two">
+                            <label for="start-date">Start Date</label>
+                            <input type="date" id="start-date" name="start-date">
+                        </div>
+                        <div class="form-element form-element-margin form-element-margin-row-two">
+                            <label for="end-date">End Date</label>
+                            <input type="date" id="end-date" name="end-date">
+                        </div>
+                    </div>
+                </div>
+                <button type="button" id="submit">Submit</button>
+            </form>
+
+            <!--Delete confirmation-->
+            <div id="delete-conf-background" class="form-toggle-none">
+                <div id="delete-conf-div">
+                    <div id="delete-conf-titlebar">
+                        <div id="delete-conf-title">Delete?</div>
+                    </div>
+                    <div id="delete-conf-btn-div">
+                        <button type="button" id="delete-conf-btn">Delete</button>
+                        <button id="delete-conf-close">Close</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="game-container-title">
+                <div id="title-tab-div">
+                    <span>Game List</span>
+                    <button type="button" id="now-button" class="tab-toggle-text">Playing</button>
+                    <button type="button" id="completed-button" class="tab-toggle-none">Completed</button>
+                    <button type="button" id="wait-button" class="tab-toggle-none">Waitlist</button>
+                    <button type="button" id="dropped-button" class="tab-toggle-none">Dropped</button>
+                    <button type="button" id="all-button" class="tab-toggle-none">All</button>
+                </div>
+            </div>
+            <div id="games-container"></div>
+            <div id="game-stat-div">
+                <div id="total-hours-div"></div>
+                <div id="total-games-div"></div>
+            </div>
+            <a id="footer" href="patch.html">Read the Patch Notes!</a>
+        </div>
+    </body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-auth.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyBylVtB77CCaHxdGCEvTWoNGL7mggRfLl8",
+            authDomain: "game-library-9cc18.firebaseapp.com",
+            databaseURL: "https://game-library-9cc18-default-rtdb.firebaseio.com",
+            projectId: "game-library-9cc18",
+            storageBucket: "game-library-9cc18.appspot.com",
+            messagingSenderId: "754723133937",
+            appId: "1:754723133937:web:e9e60747cf9be694494c50",
+            measurementId: "G-DW4KFK22PB"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+        let database = firebase.database();
+    </script>
+    <script src="script.js"></script>
+</html>
