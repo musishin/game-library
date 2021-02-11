@@ -37,14 +37,13 @@ Currently, the app allows basic storing of games and displaying of information i
 
 ## Planned Future Updates
 
-1. Add close button for add game form.
-2. Add feature to keep lists separated by year.
-3. Allow user to add notes to each game.
-4. Add ability to type in custom genre/platform.
-5. Make input field taller.
-6. Put sign out button in pop up menu upon clicking user profile.
-7. Turn the search bar into a button that shows a search bar.
-8. Add an option to sort games by different categories
-9. Add friend feature allowing viewing of friends' lists.
-10. Add cover art.
-11. Milestone achievements?
+1. Add feature to keep lists separated by year.
+2. Allow user to add notes to each game.
+3. Add ability to type in custom genre/platform.
+4. Make input fields taller.
+5. Put sign out button in pop up menu upon clicking user profile.
+6. Turn the search bar into a button that shows a search bar.
+7. Add an option to sort games by different categories
+8. Add friend feature allowing viewing of friends' lists.
+9. Add cover art.
+10. Milestone achievements?

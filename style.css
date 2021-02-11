@@ -219,7 +219,7 @@ a {
 #form-title {
     font-size: 23px;
     margin: 0px 0px 10px 0px;
-    justify-content: space-between;
+    justify-content: center;
     color: white;
 }
 
@@ -231,7 +231,6 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    /*background-color: rgb(79, 79, 92);*/
 }
 
 #form-input-container {
@@ -333,22 +332,24 @@ button {
 /* Edit form */
 
 #edit-form-title {
-    font-size: 23px;
     margin: 0px 0px 10px 0px;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-end;
     color: white;
 }
 
+#edit-title-span {
+    font-size: 23px;
+}
+
 #edit-form-container {
     width: 1200px;
-    min-height: 230px;
+    min-height: 290px;
     margin: 0px 0px 50px 0px;
     border-radius: 10px;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    /*background-color: rgb(79, 79, 92);*/
 }
 
 .edit-form-input-container {
@@ -364,6 +365,17 @@ button {
 
 #edit-submit {
     background-color: rgb(242, 157, 22);
+}
+
+#edit-close-btn {
+    font-size: 12px;
+    width: 60px;
+    height: 20px;
+    background-color: rgb(32, 32, 32);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -687,7 +699,7 @@ button {
     #form-title {
         justify-content: center;
         width: 95%;
-        margin-top: 20px;
+        margin-top: 10px;
     }
 
     #form-input-container {
@@ -722,8 +734,7 @@ button {
 
     #edit-form-container {
         width: 100%;
-        min-height: 420px;
-        height: 420px;
+        min-height: 460px;
         border-radius: 0;
     }
 
