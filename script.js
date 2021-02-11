@@ -1,4 +1,5 @@
 function Game(title, genre, platform, status, equalsSearch, hoursPlayed, startDate, endDate) {
+
     this.title = title;
     this.genre = genre;
     this.platform = platform;
@@ -10,12 +11,14 @@ function Game(title, genre, platform, status, equalsSearch, hoursPlayed, startDa
 }
 
 Game.prototype.writeInfoFirst = function() {
+
     return "Genre: " + this.genre + "\n" + 
            "Platform: " + this.platform + "\n" + 
            "Status: " + this.status;
 }
 
 Game.prototype.writeInfoSecond = function() {
+
     if(!this.endDate) {
         if(!this.hoursPlayed) {
             if(!this.startDate) {
@@ -66,6 +69,7 @@ Game.prototype.writeInfoSecond = function() {
 // Creates cards for each game in the myLibrary array along with all of its child elements and
 // displays them in array order on the page.
 function displayGames() {
+
     for(let arrayIndex = 0; arrayIndex < myLibrary.length; arrayIndex++) {
 
         let gameSquare = document.createElement('div');
@@ -176,6 +180,7 @@ function displayGames() {
 }
 
 function addGame(title, genre, platform, status, hours, startDate) {
+
     let showCard;
     if(allBtn.classList.contains('tab-toggle-text') || nowBtn.classList.contains('tab-toggle-text')) {
         showCard = true
@@ -189,6 +194,7 @@ function addGame(title, genre, platform, status, hours, startDate) {
 }
 
 function submitGame() {
+
     if(titleField.value === "" || genreField.value === "" || platformField.value === "" || statusField.value === "") {
         return;
     }
@@ -212,6 +218,7 @@ function submitGame() {
 }
 
 function editGame() {
+
     if(editStatusField.value === "" && editGenreField.value === "" && editPlatformField.value === "" && editHoursField.value === "" && editStartField.value === "" && editEndField.value === "") {
         return;
     }
@@ -273,6 +280,7 @@ function editGame() {
 }
 
 function resetGameList() {
+
     totalHours = 0;
     numOfGames = 0;
 
@@ -368,6 +376,7 @@ function resetGameList() {
 }
 
 function addGameToDb(title, genre, platform, showCard, status, hours, startDate) {
+
     if(currentUser) {
         currentUserRef.child(title).set({
             title: title,
@@ -385,6 +394,7 @@ function addGameToDb(title, genre, platform, showCard, status, hours, startDate)
 
 // Takes value snapshot of user library on database and converts it into objects to fill myLibrary[].
 function createLibrary(dbLibrary) {
+
     for(let arrayIndex = 0; arrayIndex < dbLibrary.length; arrayIndex++) {
         let newGame = new Game(dbLibrary[arrayIndex].title, dbLibrary[arrayIndex].genre, dbLibrary[arrayIndex].platform, dbLibrary[arrayIndex].status, dbLibrary[arrayIndex].equalsSearch, dbLibrary[arrayIndex].hours, dbLibrary[arrayIndex].startDate, dbLibrary[arrayIndex].endDate);
         myLibrary.push(newGame);
@@ -392,6 +402,7 @@ function createLibrary(dbLibrary) {
 }
 
 function goToTop() {
+
     document.body.scrollTop = 0; // for Safari.
     document.documentElement.scrollTop = 0; // for Chrome, Firefox, IE, Opera.
 }
@@ -456,6 +467,7 @@ let currentEvent;
 // Google Authentication
 
 googleSignIn = () => {
+
     let provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
         firebase.auth().signInWithRedirect(provider);
@@ -463,6 +475,7 @@ googleSignIn = () => {
 }
 
 googleSignOut = () => {
+
     firebase.auth().signOut().then(() => {
         console.log("Sign-out successful.");
         signBtn.classList.toggle('display-none');
@@ -484,6 +497,7 @@ submitBtn.addEventListener('click', submitGame);
 editSubmitBtn.addEventListener('click', editGame);
 
 editFormCloseBtn.addEventListener('click', () => {
+
     editFormTitle.classList.toggle('form-toggle-none');
     editFormTitle.classList.toggle('form-toggle-flex');
     editFormContainer.classList.toggle('form-toggle-none');
@@ -491,6 +505,7 @@ editFormCloseBtn.addEventListener('click', () => {
 });
 
 searchBar.addEventListener('keydown', (e) => {
+
     if(e.key.length > 1 && e.key !== "Backspace") {
         return;
     }
@@ -660,24 +675,28 @@ searchBar.addEventListener('keydown', (e) => {
 
 // Allows user to press the Enter key instead of clicking the submit button to submit a new game.
 titleField.addEventListener('keydown', (e) => {
+
     if(e.key === "Enter") {
         submitGame();
     }
 });
 
 genreField.addEventListener('keydown', (e) => {
+
     if(e.key === "Enter") {
         submitGame();
     }
 });
 
 platformField.addEventListener('keydown', (e) => {
+
     if(e.key === "Enter") {
         submitGame();
     }
 });
 
 addBtn.addEventListener('click', () => {
+
     editFormTitle.classList.remove('form-toggle-flex');
     editFormTitle.classList.add('form-toggle-none');
     editFormContainer.classList.remove('form-toggle-flex');
@@ -820,6 +839,7 @@ deleteConfCloseBtn.addEventListener('click', () => {
 
 // Firebase Realtime Database Application
 firebase.auth().onAuthStateChanged(function(user) {
+
     if (user) {
         currentUser = user;
         currentUserID = user.email.substring(0, user.email.indexOf("@"));
@@ -838,8 +858,7 @@ firebase.auth().onAuthStateChanged(function(user) {
             createLibrary(dbLibrary);
             resetGameList();
         });
-    }
-    else {
+    } else {
         userImage.classList.toggle('display-none');
         currentUser = user;
     }
