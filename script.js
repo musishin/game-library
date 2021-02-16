@@ -372,6 +372,12 @@ function resetGameList() {
         totalHoursDiv.textContent = "";
         totalGamesDiv.textContent = numOfGames + " games";
     }
+
+    if(category !== "") {
+        let sortedArray = sortArrayByCategory(category);
+        myLibrary = sortedArray;
+    }
+
     displayGames();
 }
 
@@ -407,6 +413,193 @@ function goToTop() {
     document.documentElement.scrollTop = 0; // for Chrome, Firefox, IE, Opera.
 }
 
+function sortArrayByCategory(category) {
+
+    let sortedArray = [];
+
+    if(category === "hoursasc") {
+        for(let ogIndex = 0; ogIndex < myLibrary.length; ogIndex++) {
+            if(sortedArray.length === 0) {
+                sortedArray.splice(0, 0, myLibrary[ogIndex]);
+            } else {
+                for(let newIndex = 0; newIndex <= sortedArray.length; newIndex++) {
+                    if(newIndex === sortedArray.length) {
+                        sortedArray.splice(newIndex, 0, myLibrary[ogIndex]);
+                        break;
+                    }
+                    else if(Number(myLibrary[ogIndex].hoursPlayed) < Number(sortedArray[newIndex].hoursPlayed)) {
+                        sortedArray.splice(newIndex, 0, myLibrary[ogIndex]);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    else if(category === "hoursdesc") {
+        for(let ogIndex = 0; ogIndex < myLibrary.length; ogIndex++) {
+            if(sortedArray.length === 0) {
+                sortedArray.splice(0, 0, myLibrary[ogIndex]);
+            } else {
+                for(let newIndex = 0; newIndex <= sortedArray.length; newIndex++) {
+                    if(newIndex === sortedArray.length) {
+                        sortedArray.splice(newIndex, 0, myLibrary[ogIndex]);
+                        break;
+                    }
+                    else if(Number(myLibrary[ogIndex].hoursPlayed) > Number(sortedArray[newIndex].hoursPlayed)) {
+                        sortedArray.splice(newIndex, 0, myLibrary[ogIndex]);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    else if(category === "genre") {
+        for(let ogIndex = 0; ogIndex < myLibrary.length; ogIndex++) {
+            if(sortedArray.length === 0) {
+                sortedArray.splice(0, 0, myLibrary[ogIndex]);
+            } else {
+                for(let newIndex = 0; newIndex <= sortedArray.length; newIndex++) {
+                    if(newIndex === sortedArray.length) {
+                        sortedArray.splice(newIndex, 0, myLibrary[ogIndex]);
+                        break;
+                    }
+                    else if(myLibrary[ogIndex].genre === sortedArray[newIndex].genre) {
+                        sortedArray.splice(newIndex, 0, myLibrary[ogIndex]);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    else if(category === "platform") {
+        for(let ogIndex = 0; ogIndex < myLibrary.length; ogIndex++) {
+            if(sortedArray.length === 0) {
+                sortedArray.splice(0, 0, myLibrary[ogIndex]);
+            } else {
+                for(let newIndex = 0; newIndex <= sortedArray.length; newIndex++) {
+                    if(newIndex === sortedArray.length) {
+                        sortedArray.splice(newIndex, 0, myLibrary[ogIndex]);
+                        break;
+                    }
+                    else if(myLibrary[ogIndex].platform === sortedArray[newIndex].platform) {
+                        sortedArray.splice(newIndex, 0, myLibrary[ogIndex]);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    else if(category === "startdateasc") {
+        for(let ogIndex = 0; ogIndex < myLibrary.length; ogIndex++) {
+            if(sortedArray.length === 0) {
+                sortedArray.splice(0, 0, myLibrary[ogIndex]);
+            }
+            else if(myLibrary[ogIndex].startDate === undefined || myLibrary[ogIndex].startDate === "" || myLibrary[ogIndex].startDate === null) {
+                sortedArray.splice(sortedArray.length, 0, myLibrary[ogIndex]);
+            }
+            else {
+                for(let newIndex = 0; newIndex <= sortedArray.length; newIndex++) {
+                    if(newIndex === sortedArray.length) {
+                        sortedArray.splice(newIndex, 0, myLibrary[ogIndex]);
+                        break;
+                    }
+                    else {
+                        let checkingDate = new Date(myLibrary[ogIndex].startDate);
+                        let comparingDate = new Date(sortedArray[newIndex].startDate);
+                        if(comparingDate.toDateString() === "Invalid Date" || checkingDate < comparingDate) {
+                            sortedArray.splice(newIndex, 0, myLibrary[ogIndex]);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if(category === "startdatedesc") {
+        for(let ogIndex = 0; ogIndex < myLibrary.length; ogIndex++) {
+            if(sortedArray.length === 0) {
+                sortedArray.splice(0, 0, myLibrary[ogIndex]);
+            }
+            else if(myLibrary[ogIndex].startDate === undefined || myLibrary[ogIndex].startDate === "" || myLibrary[ogIndex].startDate === null) {
+                sortedArray.splice(sortedArray.length, 0, myLibrary[ogIndex]);
+            }
+            else {
+                for(let newIndex = 0; newIndex <= sortedArray.length; newIndex++) {
+                    if(newIndex === sortedArray.length) {
+                        sortedArray.splice(newIndex, 0, myLibrary[ogIndex]);
+                        break;
+                    }
+                    else {
+                        let checkingDate = new Date(myLibrary[ogIndex].startDate);
+                        let comparingDate = new Date(sortedArray[newIndex].startDate);
+                        if(comparingDate.toDateString() === "Invalid Date" || checkingDate > comparingDate) {
+                            sortedArray.splice(newIndex, 0, myLibrary[ogIndex]);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if(category === "enddateasc") {
+        for(let ogIndex = 0; ogIndex < myLibrary.length; ogIndex++) {
+            if(sortedArray.length === 0) {
+                sortedArray.splice(0, 0, myLibrary[ogIndex]);
+            }
+            else if(myLibrary[ogIndex].endDate === undefined || myLibrary[ogIndex].endDate === "" || myLibrary[ogIndex].endDate === null) {
+                sortedArray.splice(sortedArray.length, 0, myLibrary[ogIndex]);
+            }
+            else {
+                for(let newIndex = 0; newIndex <= sortedArray.length; newIndex++) {
+                    if(newIndex === sortedArray.length) {
+                        sortedArray.splice(newIndex, 0, myLibrary[ogIndex]);
+                        break;
+                    }
+                    else {
+                        let checkingDate = new Date(myLibrary[ogIndex].endDate);
+                        let comparingDate = new Date(sortedArray[newIndex].endDate);
+                        if(comparingDate.toDateString() === "Invalid Date" || checkingDate < comparingDate) {
+                            sortedArray.splice(newIndex, 0, myLibrary[ogIndex]);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if(category === "enddatedesc") {
+        for(let ogIndex = 0; ogIndex < myLibrary.length; ogIndex++) {
+            if(sortedArray.length === 0) {
+                sortedArray.splice(0, 0, myLibrary[ogIndex]);
+            }
+            else if(myLibrary[ogIndex].endDate === undefined || myLibrary[ogIndex].endDate === "" || myLibrary[ogIndex].endDate === null) {
+                sortedArray.splice(sortedArray.length, 0, myLibrary[ogIndex]);
+            }
+            else {
+                for(let newIndex = 0; newIndex <= sortedArray.length; newIndex++) {
+                    if(newIndex === sortedArray.length) {
+                        sortedArray.splice(newIndex, 0, myLibrary[ogIndex]);
+                        break;
+                    }
+                    else {
+                        let checkingDate = new Date(myLibrary[ogIndex].endDate);
+                        let comparingDate = new Date(sortedArray[newIndex].endDate);
+                        if(comparingDate.toDateString() === "Invalid Date" || checkingDate > comparingDate) {
+                            sortedArray.splice(newIndex, 0, myLibrary[ogIndex]);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else {
+        sortedArray = myLibrary;
+    }
+
+    return sortedArray;
+}
+
 
 
 const gamesContainer = document.querySelector('#games-container');
@@ -432,6 +625,8 @@ const editEndField = document.querySelector('#edit-end-date');
 
 const searchBar = document.querySelector('#search');
 const addBtn = document.querySelector('#add-button');
+const catSortSelect = document.querySelector('#cat-sort');
+
 const formContainer = document.querySelector('#form-container');
 const formTitle = document.querySelector('#form-title');
 const editFormTitle = document.querySelector('#edit-form-title');
@@ -462,6 +657,7 @@ let currentUserID;
 let currentUserRef;
 let myLibrary = [];
 let currentEvent;
+let category = "";
 
 
 // Google Authentication
@@ -502,6 +698,20 @@ editFormCloseBtn.addEventListener('click', () => {
     editFormTitle.classList.toggle('form-toggle-flex');
     editFormContainer.classList.toggle('form-toggle-none');
     editFormContainer.classList.toggle('form-toggle-flex');
+});
+
+catSortSelect.addEventListener('change', (e) => {
+
+    category = e.target.value;
+
+    if(category !== "") {
+        let sortedArray = sortArrayByCategory(category);
+        myLibrary = sortedArray;
+        while(gamesContainer.hasChildNodes()) {
+            gamesContainer.removeChild(gamesContainer.lastChild);
+        }
+        displayGames();
+    }
 });
 
 searchBar.addEventListener('keydown', (e) => {

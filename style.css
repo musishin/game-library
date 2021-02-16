@@ -100,7 +100,6 @@ a {
 #page-title {
     width: 100%;
     min-height: 60px;
-    font-size: 40px;
     font-family: 'Galatea Light', sans-serif;
     display: flex;
     flex-direction: column;
@@ -108,6 +107,10 @@ a {
     margin-bottom: 80px;
     color: white;
     z-index: 2;
+}
+
+#title-span {
+    font-size: 40px;
 }
 
 #icon-img {
@@ -178,6 +181,46 @@ a {
     color: black;
     background: rgb(230, 230, 230);
     margin-right: 10px;
+}
+
+#cat-sort {
+    width: 170px;
+    margin-right: 10px;
+}
+
+#cat-select-div {
+    position: relative;
+    height: 27px;
+    font-size: 13px;
+}
+
+#cat-select-div::after {
+    content: '>';
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    right: 20px;
+    top: 5px;
+    position: absolute;
+    color: rgb(78, 78, 78);
+    font-family: 'Galatea Regular', sans-serif;
+}
+
+#cat-select-div select {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    height: 27px;
+    padding: 0 0 0 10px;
+    font-size: 13px;
+    color: rgb(82, 82, 82);
+    background: rgb(230, 230, 230);
+    border-radius: 6px;
 }
 
 
@@ -457,6 +500,7 @@ button {
     margin-bottom: 10px;
     display: flex;
     align-items: flex-start;
+    overflow: hidden;
 }
 
 .game-delete-menu-container {
@@ -674,12 +718,15 @@ button {
     }
 
     #search-form {
-        justify-content: center;
+        justify-content: space-between;
     }
 
     #search {
-        width: 80%;
-        margin-left: 10px;
+        flex-grow: 1;
+    }
+
+    #cat-sort {
+        margin: 0 10px 0 10px;
     }
 
     #add-button {
@@ -782,12 +829,15 @@ button {
     #games-container {
         width: 100%;
         margin-bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .game-square {
-        width: 100%;
+        width: 90%;
         margin: 0px 0px 10px 0px;
-        border-radius: 0;
+        border-radius: 10px;
         min-width: 50px;
         background-color: rgb(79, 79, 92);
     }
