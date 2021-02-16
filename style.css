@@ -2,7 +2,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(32, 32, 32);
+    background-color: #33333f;
     font-family: 'Galatea Light', sans-serif;
     margin: 0;
     padding: 0;
@@ -35,14 +35,14 @@ body {
     font-size: 13px;
     width: 100%;
     min-height: 45px;
-    background-color: rgb(32, 32, 32);
-    color: rgb(242, 157, 22);
+    background-color: #33333f;
+    color: #cf8626;
     margin-bottom: 20px;
 }
 
 a {
     text-decoration: none;
-    color: white;
+    color: #f8f7f6;
 }
 
 .form-toggle-none {
@@ -54,11 +54,11 @@ a {
 }
 
 .tab-toggle-none {
-    color: white;
+    color: #f8f7f6;
 }
 
 .tab-toggle-text {
-    color: rgb(242, 157, 22);
+    color: #cf8626;
 }
 
 .display-none {
@@ -76,8 +76,8 @@ a {
     min-width: 1200px;
     width: 100%;
     height: 140px;
-    background-color: rgb(79, 79, 92);
-    box-shadow: 0px 1px 6px rgb(32, 32, 32);
+    background-color: #33333f;
+    /*box-shadow: 0px 1px 6px rgb(32, 32, 32);*/
 }
 
 #top-title-container {
@@ -105,7 +105,7 @@ a {
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 80px;
-    color: white;
+    color: #f8f7f6;
     z-index: 2;
 }
 
@@ -121,11 +121,12 @@ a {
 
 #add-button {
     border-radius: 8px;
-    height: 25px;
+    height: 27px;
     width: 60px;
-    background-color: rgb(242, 157, 22);
+    background-color: #ce8626;
+    color: black;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 13px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -133,11 +134,12 @@ a {
 
 #sign-button {
     border-radius: 8px;
-    height: 25px;
+    height: 27px;
     width: 70px;
-    background-color: rgb(242, 157, 22);
+    background-color: #5e5d7d;
+    color: #f8f7f6;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 13px;
     justify-content: center;
     align-items: center;
     margin-left: 10px;
@@ -145,11 +147,12 @@ a {
 
 #sign-out-button {
     border-radius: 8px;
-    height: 25px;
+    height: 27px;
     width: 80px;
-    background-color: rgb(242, 157, 22);
+    background-color: #5e5d7d;
+    color: #f8f7f6;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 13px;
     justify-content: center;
     align-items: center;
     margin-left: 10px;
@@ -179,7 +182,7 @@ a {
     border-radius: 6px;
     width: 300px;
     color: black;
-    background: rgb(230, 230, 230);
+    background: #f8f7f6;
     margin-right: 10px;
 }
 
@@ -219,7 +222,7 @@ a {
     padding: 0 0 0 10px;
     font-size: 13px;
     color: rgb(82, 82, 82);
-    background: rgb(230, 230, 230);
+    background: #f8f7f6;
     border-radius: 6px;
 }
 
@@ -228,27 +231,20 @@ a {
 /* Card buttons */
 
 .delete-btn {
-    width: 22px;
-    height: 22px;
-    font-size: 11px;
-    color: black;
-    padding: 4px;
-    background-color: rgb(242, 157, 22);
+    background-color: lightcoral;
+    margin-right: 20px;
 }
 
 .delete-btn:hover {
     cursor: pointer;
-    background-color: white;
+    background-color: #f8f7f6;
+    color: black;
 }
 
 .edit-button {
-    width: 50px;
-    height: 22px;
-    font-size: 11px;
-    color: black;
+    width: 15px;
+    height: 15px;
     padding: 4px;
-    background-color: rgb(242, 157, 22);
-    margin-right: 3px;
 }
 
 .edit-button:hover {
@@ -263,7 +259,7 @@ a {
     font-size: 23px;
     margin: 0px 0px 10px 0px;
     justify-content: center;
-    color: white;
+    color: #f8f7f6;
 }
 
 #form-container {
@@ -298,7 +294,7 @@ a {
 }
 
 label {
-    color: white;
+    color: #f8f7f6;
 }
 
 input {
@@ -362,11 +358,11 @@ button {
 
 #submit:hover {
     cursor: pointer;
-    background-color: white;
+    background-color: #f8f7f6;
 }
 
 #submit {
-    background-color: rgb(242, 157, 22);
+    background-color: #cf8626;
     transition: all 1s;
 }
 
@@ -378,7 +374,7 @@ button {
     margin: 0px 0px 10px 0px;
     justify-content: center;
     align-items: flex-end;
-    color: white;
+    color: #f8f7f6;
 }
 
 #edit-title-span {
@@ -403,22 +399,23 @@ button {
 
 #edit-submit:hover {
     cursor: pointer;
-    background-color: white;
+    background-color: #f8f7f6;
 }
 
 #edit-submit {
-    background-color: rgb(242, 157, 22);
+    background-color: #cf8626;
 }
 
 #edit-close-btn {
     font-size: 12px;
     width: 60px;
     height: 20px;
-    background-color: rgb(32, 32, 32);
-    color: white;
+    background-color: #33333f;
+    color: #f8f7f6;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 
@@ -443,7 +440,7 @@ button {
 
 #title-tab-div {
     display: flex;
-    color: white;
+    color: #f8f7f6;
     align-items: flex-end;
 }
 
@@ -453,7 +450,7 @@ button {
     width: auto;
     border: none;
     box-shadow: none;
-    background-color: rgb(32, 32, 32);
+    background-color: #33333f;
     margin: 0 2px 0 2px;
     cursor: pointer;
 }
@@ -465,13 +462,14 @@ button {
 .game-square {
     display: flex;
     flex-direction: column;
-    background-color: rgb(79, 79, 92);
+    background-color: #5e5d7d;
     width: 373px;
-    height: 85px;
+    min-height: 85px;
+    height: auto;
     border-radius: 10px;
     padding: 10px;
     margin: 0px 10px 10px 0px;
-    color: white;
+    color: #f8f7f6;
 }
 
 .game-info-container {
@@ -520,12 +518,12 @@ button {
 }
 
 #total-hours-div {
-    color: white;
+    color: #f8f7f6;
     padding-left: 10px;
 }
 
 #total-games-div {
-    color: white;
+    color: #f8f7f6;
     padding-right: 10px;
 }
 
@@ -549,14 +547,14 @@ button {
 
 #delete-conf-div {
     border-radius: 10px;
-    background-color: rgb(79, 79, 92);
+    background-color: #5e5d7d;
     height: 150px;
-    width: 60%;
+    width: 400px;
     position: fixed;
     top: 50%;
     left: 50%;
     margin-top: -75px;
-    margin-left: -30%;
+    margin-left: -200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -570,7 +568,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: #f8f7f6;
 }
 
 #delete-conf-title {
@@ -582,11 +580,12 @@ button {
     width: 60px;
     height: 20px;
     margin-top: 25px;
-    background-color: rgb(79, 79, 92);
-    color: white;
+    background-color: #5e5d7d;
+    color: #f8f7f6;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 #delete-conf-btn-div {
@@ -605,6 +604,11 @@ button {
     color: black;
     border: none;
     border-radius: 10px;
+    cursor: pointer;
+}
+
+#delete-conf-btn:hover {
+    background-color: #f8f7f6;
 }
 
 
@@ -612,14 +616,14 @@ button {
 /* Patch Notes Page */
 
 .patch-div {
-    color: white;
+    color: #f8f7f6;
     margin: 0px 15px 30px 15px;
 }
 
 .patch-title {
     font-size: 28px;
     height: 80px;
-    color: white;
+    color: #f8f7f6;
     display: flex;
     align-items: center;
 }
@@ -682,8 +686,7 @@ button {
         position: fixed;
         top: 0;
         padding: 10px 0px 10px 0px;
-        background-color: rgb(79, 79, 92);
-        box-shadow: 0px 1px 6px rgb(32, 32, 32);
+        background-color: #33333f;
     }
 
     #title-span {
@@ -805,7 +808,7 @@ button {
     #submit {
         margin-top: 10px;
         margin-right: 0;
-        background-color: rgb(242, 157, 22);
+        background-color: #ce8626;
     }
 
     #game-container-title {
@@ -839,7 +842,7 @@ button {
         margin: 0px 0px 10px 0px;
         border-radius: 10px;
         min-width: 50px;
-        background-color: rgb(79, 79, 92);
+        background-color: #5e5d7d;
     }
 
     .patch-div {
@@ -848,5 +851,10 @@ button {
 
     #go-back-link {
         margin: 0 15px 0px 15px;
+    }
+
+    #delete-conf-div {
+        width: 60%;
+        margin-left: -30%;
     }
 }

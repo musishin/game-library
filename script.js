@@ -79,15 +79,12 @@ function displayGames() {
         let gameTitleContainer = document.createElement('div');
         let gameDeleteMenuContainer = document.createElement('div');
         let titleDeleteContainer = document.createElement('div');
-        let deleteBtn = document.createElement('button');
         let editBtn = document.createElement('button');
+        let editImg = document.createElement('img');
 
-        deleteBtn.classList.add('delete-btn');
-        deleteBtn.textContent = "X";
-        deleteBtn.setAttribute('data-arrayIndex', arrayIndex);
-        editBtn.classList.add('edit-button');
-        editBtn.textContent = "Edit";
-        editBtn.setAttribute('data-arrayIndex', arrayIndex);
+        editImg.src = "./images/edit-property.png";
+        editImg.classList.add('edit-button');
+        editImg.setAttribute('data-arrayIndex', arrayIndex);
 
         gameSquare.classList.add('game-square');
         gameInfoContainer.classList.add('game-info-container');
@@ -96,17 +93,11 @@ function displayGames() {
         gameDeleteMenuContainer.classList.add('game-delete-menu-container');
         titleDeleteContainer.classList.add('title-delete-container');
 
-        if(myLibrary[arrayIndex].title.length > 40) {
-            gameTitleContainer.textContent = myLibrary[arrayIndex].title.substring(0, 37) + "...";
-        }
-        else {
-            gameTitleContainer.textContent = myLibrary[arrayIndex].title;
-        }
+        gameTitleContainer.textContent = myLibrary[arrayIndex].title;
 
         titleDeleteContainer.appendChild(gameTitleContainer);
         titleDeleteContainer.appendChild(gameDeleteMenuContainer);
-        gameDeleteMenuContainer.appendChild(editBtn);
-        gameDeleteMenuContainer.appendChild(deleteBtn);
+        gameDeleteMenuContainer.appendChild(editImg);
         gameSquare.appendChild(titleDeleteContainer);
         gameSquare.appendChild(gameInfoContainer);
         gameInfoContainer.appendChild(firstInfoContainer);
@@ -137,7 +128,7 @@ function displayGames() {
         }
 
         // Edit button will open up a form to allow editing of the game information.
-        editBtn.addEventListener('click', (e) => {
+        editImg.addEventListener('click', (e) => {
             currentEdit = myLibrary[e.target.getAttribute('data-arrayIndex')].title;
             editTitleSpan.textContent = 'Edit for ' + myLibrary[e.target.getAttribute('data-arrayIndex')].title;
             goToTop();
@@ -166,15 +157,6 @@ function displayGames() {
                 editFormContainer.classList.toggle('form-toggle-none');
                 editFormContainer.classList.toggle('form-toggle-flex');
             }
-        });
-
-        // Eventlistener for delete button on cards.
-        deleteBtn.addEventListener('click', (e) => {
-
-            deleteConfBackground.classList.toggle('form-toggle-none');
-            deleteConfBackground.classList.toggle('form-toggle-flex');
-
-            currentEvent = e;
         });
     }
 }
@@ -605,6 +587,7 @@ function sortArrayByCategory(category) {
 const gamesContainer = document.querySelector('#games-container');
 const submitBtn = document.querySelector('#submit');
 const editSubmitBtn = document.querySelector('#edit-submit');
+const editDeleteBtn = document.querySelector('.delete-btn');
 const totalHoursDiv = document.querySelector('#total-hours-div');
 const totalGamesDiv = document.querySelector('#total-games-div');
 
@@ -712,6 +695,15 @@ catSortSelect.addEventListener('change', (e) => {
         }
         displayGames();
     }
+});
+
+// Eventlistener for delete button on cards.
+editDeleteBtn.addEventListener('click', (e) => {
+
+    deleteConfBackground.classList.toggle('form-toggle-none');
+    deleteConfBackground.classList.toggle('form-toggle-flex');
+
+    currentEvent = e;
 });
 
 searchBar.addEventListener('keydown', (e) => {
