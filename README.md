@@ -42,8 +42,7 @@ Currently, the app allows basic storing of games and displaying of information i
 3. Add ability to type in custom genre/platform.
 4. Make input fields taller.
 5. Put sign out button in pop up menu upon clicking user profile.
-6. Turn the search bar into a button that shows a search bar.
-7. Add an option to sort games by different categories
-8. Add friend feature allowing viewing of friends' lists.
-9. Add cover art.
-10. Milestone achievements?
+6. Change layout of search bar.
+7. Add friend feature allowing viewing of friends' lists.
+8. Add cover art.
+9. Milestone achievements?

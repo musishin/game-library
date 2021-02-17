@@ -33,15 +33,20 @@
                         <span id="title-span"><a href="index.html">Game Library</a></span>
                     </div>
                     <div id="top-button-container">
+                        <div id="year-select-div">
+                            <select name="year-select" id="year-select">
+                                <!--<option value="">Year</option>-->
+                            </select>
+                        </div>
                         <button type="button" id="sign-button" class="" onclick="googleSignIn()">Sign In</button>
-                        <button type="button" id="sign-out-button" class="display-none" onclick="googleSignOut()">Sign Out</button>
+                        <!--<button type="button" id="sign-out-button" class="display-none" onclick="googleSignOut()">Sign Out</button>-->
                         <div id="user-img" class=""></div>
                     </div>
                 </div>
                 <div id="search-form">
                     <div id="cat-select-div">
                         <select name="cat-sort" id="cat-sort">
-                            <option value="">Sort by</option>
+                            <option value="">Sort by Category</option>
                             <option value="hoursasc">Hours Ascending</option>
                             <option value="hoursdesc">Hours Descending</option>
                             <option value="startdateasc">Start Date Ascending</option>
@@ -52,7 +57,7 @@
                             <option value="platform">Platform</option>
                         </select>
                     </div>
-                    <input type="text" id="search" name="search" placeholder="Search">
+                    <input type="text" id="search" name="search" placeholder="Search by Title">
                     <button type="button" id="add-button" onclick="goToTop()">+Add</button>
                 </div>
             </div>
@@ -61,7 +66,7 @@
 
             <!--Edit form-->
             <div id="edit-form-title" class="form-toggle-none">
-                <span id="edit-title-span"></span>
+                <div id="edit-title-span"></div>
             </div>
             <form id="edit-form-container" class="form-toggle-none">
                 <div class="edit-input-container">
@@ -109,13 +114,17 @@
                                 <option value="PC">PC</option>
                                 <option value="PS4">PS4</option>
                                 <option value="Xbox One">Xbox One</option>
+                                <option value="Xbox 360">Xbox 360</option>
+                                <option value="PS3">PS3</option>
                                 <option value="Mobile">Mobile</option>
                                 <option value="GBA">GBA</option>
                                 <option value="SNES">SNES</option>
                                 <option value="DS">DS</option>
                                 <option value="3DS">3DS</option>
+                                <option value="ps2">PS2</option>
                                 <option value="PSP">PSP</option>
                                 <option value="Vita">Vita</option>
+                                <option value="ps1">PS1</option>
                             </select>
                         </div>
                         <div class="form-element form-element-margin select-div">
@@ -201,13 +210,17 @@
                                 <option value="PC">PC</option>
                                 <option value="PS4">PS4</option>
                                 <option value="Xbox One">Xbox One</option>
+                                <option value="Xbox 360">Xbox 360</option>
+                                <option value="PS3">PS3</option>
                                 <option value="Mobile">Mobile</option>
                                 <option value="GBA">GBA</option>
                                 <option value="SNES">SNES</option>
                                 <option value="DS">DS</option>
                                 <option value="3DS">3DS</option>
+                                <option value="ps2">PS2</option>
                                 <option value="PSP">PSP</option>
                                 <option value="Vita">Vita</option>
+                                <option value="ps1">PS1</option>
                             </select>
                         </div>
                         <div class="form-element form-element-margin select-div">
@@ -250,6 +263,19 @@
                 </div>
             </div>
 
+            <!--Sign Out-->
+            <div id="signout-background" class="form-toggle-none">
+                <div id="signout-div">
+                    <div id="signout-titlebar">
+                        <div id="signout-title">Sign Out?</div>
+                    </div>
+                    <div id="signout-btn-div">
+                        <button type="button" id="signout-btn">Sign Out</button>
+                        <button id="signout-close">Close</button>
+                    </div>
+                </div>
+            </div>
+
 
 
             <div id="game-container-title">
@@ -267,9 +293,12 @@
                 <div id="total-hours-div"></div>
                 <div id="total-games-div"></div>
             </div>
-            <a id="footer" href="patch.html">Read the Patch Notes!</a>
+            <div id="footer"><a id="patch-link" href="patch.html">Read the Patch Notes!</a></div>
         </div>
     </body>
+
+
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
 

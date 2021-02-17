@@ -2,7 +2,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #33333f;
+    background-color: #30354a;
     font-family: 'Galatea Light', sans-serif;
     margin: 0;
     padding: 0;
@@ -28,21 +28,9 @@ body {
     flex-direction: column;
 }
 
-#footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 13px;
-    width: 100%;
-    min-height: 45px;
-    background-color: #33333f;
-    color: #cf8626;
-    margin-bottom: 20px;
-}
-
 a {
     text-decoration: none;
-    color: #f8f7f6;
+    color: #f2f3ed;
 }
 
 .form-toggle-none {
@@ -54,11 +42,11 @@ a {
 }
 
 .tab-toggle-none {
-    color: #f8f7f6;
+    color: #f2f3ed;
 }
 
 .tab-toggle-text {
-    color: #cf8626;
+    color: #ce8626;
 }
 
 .display-none {
@@ -76,7 +64,7 @@ a {
     min-width: 1200px;
     width: 100%;
     height: 140px;
-    background-color: #33333f;
+    background-color: #30354a;
     /*box-shadow: 0px 1px 6px rgb(32, 32, 32);*/
 }
 
@@ -105,7 +93,7 @@ a {
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 80px;
-    color: #f8f7f6;
+    color: #f2f3ed;
     z-index: 2;
 }
 
@@ -135,28 +123,26 @@ a {
 #sign-button {
     border-radius: 8px;
     height: 27px;
-    width: 70px;
-    background-color: #5e5d7d;
-    color: #f8f7f6;
+    width: 75px;
+    background-color: #30354a;
+    color: #f2f3ed;
     cursor: pointer;
     font-size: 13px;
     justify-content: center;
     align-items: center;
-    margin-left: 10px;
 }
 
 #sign-out-button {
     border-radius: 8px;
     height: 27px;
-    width: 80px;
-    background-color: #5e5d7d;
-    color: #f8f7f6;
+    width: 75px;
+    background-color: #30354a;
+    color: #f2f3ed;
     cursor: pointer;
     font-size: 13px;
     justify-content: center;
     align-items: center;
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 
 #user-img {
@@ -167,7 +153,7 @@ a {
     background-size: 100%;
     margin-left: 0px;
     cursor: pointer;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 
 #search-form {
@@ -181,14 +167,15 @@ a {
 #search {
     border-radius: 6px;
     width: 300px;
-    color: black;
-    background: #f8f7f6;
+    color: #f2f3ed;
+    background: #70778b;
     margin-right: 10px;
 }
 
 #cat-sort {
     width: 170px;
     margin-right: 10px;
+    font-family: 'Galatea Light', sans-serif;
 }
 
 #cat-select-div {
@@ -206,7 +193,7 @@ a {
     right: 20px;
     top: 5px;
     position: absolute;
-    color: rgb(78, 78, 78);
+    color: #f2f3ed;
     font-family: 'Galatea Regular', sans-serif;
 }
 
@@ -221,9 +208,52 @@ a {
     height: 27px;
     padding: 0 0 0 10px;
     font-size: 13px;
-    color: rgb(82, 82, 82);
-    background: #f8f7f6;
+    color: #f2f3ed;
+    background: #70778b;
     border-radius: 6px;
+    position: relative;
+}
+
+#year-select {
+    width: 70px;
+    margin-right: 10px;
+    font-family: 'Galatea Light', sans-serif;
+}
+
+#year-select-div {
+    position: relative;
+    height: 27px;
+    font-size: 13px;
+}
+
+#year-select-div::after {
+    content: '>';
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    right: 20px;
+    top: 5px;
+    position: absolute;
+    color: #f2f3ed;
+    font-family: 'Galatea Regular', sans-serif;
+}
+
+#year-select-div select {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    height: 27px;
+    padding: 0 0 0 10px;
+    font-size: 13px;
+    color: #f2f3ed;
+    background: #70778b;
+    border-radius: 6px;
+    position: relative;
 }
 
 
@@ -237,7 +267,7 @@ a {
 
 .delete-btn:hover {
     cursor: pointer;
-    background-color: #f8f7f6;
+    background-color: #f2f3ed;
     color: black;
 }
 
@@ -259,7 +289,7 @@ a {
     font-size: 23px;
     margin: 0px 0px 10px 0px;
     justify-content: center;
-    color: #f8f7f6;
+    color: #f2f3ed;
 }
 
 #form-container {
@@ -294,7 +324,7 @@ a {
 }
 
 label {
-    color: #f8f7f6;
+    color: #f2f3ed;
 }
 
 input {
@@ -358,11 +388,11 @@ button {
 
 #submit:hover {
     cursor: pointer;
-    background-color: #f8f7f6;
+    background-color: #f2f3ed;
 }
 
 #submit {
-    background-color: #cf8626;
+    background-color: #ce8626;
     transition: all 1s;
 }
 
@@ -373,12 +403,15 @@ button {
 #edit-form-title {
     margin: 0px 0px 10px 0px;
     justify-content: center;
-    align-items: flex-end;
-    color: #f8f7f6;
+    align-items: center;
+    color: #f2f3ed;
 }
 
 #edit-title-span {
     font-size: 23px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #edit-form-container {
@@ -399,11 +432,11 @@ button {
 
 #edit-submit:hover {
     cursor: pointer;
-    background-color: #f8f7f6;
+    background-color: #f2f3ed;
 }
 
 #edit-submit {
-    background-color: #cf8626;
+    background-color: #ce8626;
 }
 
 #edit-close-btn {
@@ -411,7 +444,7 @@ button {
     width: 60px;
     height: 20px;
     background-color: #33333f;
-    color: #f8f7f6;
+    color: #f2f3ed;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -440,7 +473,7 @@ button {
 
 #title-tab-div {
     display: flex;
-    color: #f8f7f6;
+    color: #f2f3ed;
     align-items: flex-end;
 }
 
@@ -450,7 +483,7 @@ button {
     width: auto;
     border: none;
     box-shadow: none;
-    background-color: #33333f;
+    background-color: #30354a;
     margin: 0 2px 0 2px;
     cursor: pointer;
 }
@@ -462,14 +495,14 @@ button {
 .game-square {
     display: flex;
     flex-direction: column;
-    background-color: #5e5d7d;
+    background-color: #70778b;
     width: 373px;
     min-height: 85px;
     height: auto;
-    border-radius: 10px;
     padding: 10px;
     margin: 0px 10px 10px 0px;
-    color: #f8f7f6;
+    color: #f2f3ed;
+    border-radius: 10px;
 }
 
 .game-info-container {
@@ -498,7 +531,9 @@ button {
     margin-bottom: 10px;
     display: flex;
     align-items: flex-start;
+    flex-grow: 1;
     overflow: hidden;
+    font-family: 'Galatea Regular', sans-serif;
 }
 
 .game-delete-menu-container {
@@ -518,12 +553,12 @@ button {
 }
 
 #total-hours-div {
-    color: #f8f7f6;
+    color: #f2f3ed;
     padding-left: 10px;
 }
 
 #total-games-div {
-    color: #f8f7f6;
+    color: #f2f3ed;
     padding-right: 10px;
 }
 
@@ -547,7 +582,7 @@ button {
 
 #delete-conf-div {
     border-radius: 10px;
-    background-color: #5e5d7d;
+    background-color: #30354a;
     height: 150px;
     width: 400px;
     position: fixed;
@@ -568,7 +603,7 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #f8f7f6;
+    color: #f2f3ed;
 }
 
 #delete-conf-title {
@@ -580,8 +615,8 @@ button {
     width: 60px;
     height: 20px;
     margin-top: 25px;
-    background-color: #5e5d7d;
-    color: #f8f7f6;
+    background-color: #30354a;
+    color: #f2f3ed;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -608,7 +643,110 @@ button {
 }
 
 #delete-conf-btn:hover {
-    background-color: #f8f7f6;
+    background-color: #f2f3ed;
+}
+
+
+
+/* Sign Out */
+
+#signout-background {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.459);
+    z-index: 5;
+}
+
+#signout-div {
+    border-radius: 10px;
+    background-color: #30354a;
+    height: 150px;
+    width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -75px;
+    margin-left: -200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#signout-titlebar {
+    width: 90%;
+    height: 20%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #f2f3ed;
+}
+
+#signout-title {
+    font-size: 14px;
+}
+
+#signout-close {
+    font-size: 12px;
+    width: 60px;
+    height: 20px;
+    margin-top: 25px;
+    background-color: #30354a;
+    color: #f2f3ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#signout-btn-div {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#signout-btn {
+    width: 120px;
+    height: 40px;
+    background-color: #ce8626;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#signout-btn:hover {
+    background-color: #f2f3ed;
+}
+
+
+
+/* Footer */
+
+#footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    width: 100%;
+    min-height: 45px;
+    background-color: #30354a;
+    margin-bottom: 20px;
+}
+
+#patch-link {
+    color: #ce8626;
 }
 
 
@@ -616,14 +754,14 @@ button {
 /* Patch Notes Page */
 
 .patch-div {
-    color: #f8f7f6;
+    color: #f2f3ed;
     margin: 0px 15px 30px 15px;
 }
 
 .patch-title {
     font-size: 28px;
     height: 80px;
-    color: #f8f7f6;
+    color: #f2f3ed;
     display: flex;
     align-items: center;
 }
@@ -650,6 +788,13 @@ button {
 @media screen and (max-width: 1200px) {
     #page-title {
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 335px) {
+    #title-span {
+        font-size: 23px;
+        margin-left: 10px;
     }
 }
 
@@ -686,7 +831,7 @@ button {
         position: fixed;
         top: 0;
         padding: 10px 0px 10px 0px;
-        background-color: #33333f;
+        background-color: #30354a;
     }
 
     #title-span {
@@ -725,6 +870,8 @@ button {
     }
 
     #search {
+        min-width: 0;
+        width: auto;
         flex-grow: 1;
     }
 
@@ -735,6 +882,7 @@ button {
     #add-button {
         margin-right: 10px;
         font-size: 13px;
+        min-width: 60px;
     }
 
     #form-container {
@@ -838,11 +986,14 @@ button {
     }
 
     .game-square {
-        width: 90%;
+        width: 95%;
         margin: 0px 0px 10px 0px;
-        border-radius: 10px;
         min-width: 50px;
-        background-color: #5e5d7d;
+        border: 0;
+        border-top: 1px solid #9fa190;
+        border-radius: 0;
+        padding: 10px 0 10px 0;
+        background-color: #30354a;
     }
 
     .patch-div {
@@ -851,10 +1002,5 @@ button {
 
     #go-back-link {
         margin: 0 15px 0px 15px;
-    }
-
-    #delete-conf-div {
-        width: 60%;
-        margin-left: -30%;
     }
 }

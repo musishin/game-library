@@ -24,21 +24,21 @@ Game.prototype.writeInfoSecond = function() {
             if(!this.startDate) {
                 return "Start Date: " + "Not Started" + "\n" + 
                        "End Date: " + "\n" + 
-                       "Hours Played: " + 0;
+                       "Hours: " + 0;
             } else {
                 return "Start Date: " + this.startDate + "\n" + 
                        "End Date: " + "\n" + 
-                       "Hours Played: " + 0;
+                       "Hours: " + 0;
             }
         } else {
             if(!this.startDate) {
                 return "Start Date: " + "Not Started" + "\n" + 
                        "End Date: " + "\n" + 
-                       "Hours Played: " + this.hoursPlayed;
+                       "Hours: " + this.hoursPlayed;
             } else {
                 return "Start Date: " + this.startDate + "\n" + 
                        "End Date: " + "\n" + 
-                       "Hours Played: " + this.hoursPlayed;
+                       "Hours: " + this.hoursPlayed;
             }
         }
     } else {
@@ -46,21 +46,21 @@ Game.prototype.writeInfoSecond = function() {
             if(!this.startDate) {
                 return "Start Date: " + "Not Started" + "\n" + 
                        "End Date: " + this.endDate + "\n" + 
-                       "Hours Played: " + 0;
+                       "Hours: " + 0;
             } else {
                 return "Start Date: " + this.startDate + "\n" + 
                        "End Date: " + this.endDate + "\n" + 
-                       "Hours Played: " + 0;
+                       "Hours: " + 0;
             }
         } else {
             if(!this.startDate) {
                 return "Start Date: " + "Not Started" + "\n" + 
                        "End Date: " + this.endDate + "\n" + 
-                       "Hours Played: " + this.hoursPlayed;
+                       "Hours: " + this.hoursPlayed;
             } else {
                 return "Start Date: " + this.startDate + "\n" + 
                        "End Date: " + this.endDate + "\n" + 
-                       "Hours Played: " + this.hoursPlayed;
+                       "Hours: " + this.hoursPlayed;
             }
         }
     }
@@ -129,6 +129,7 @@ function displayGames() {
 
         // Edit button will open up a form to allow editing of the game information.
         editImg.addEventListener('click', (e) => {
+            currentEvent = e;
             currentEdit = myLibrary[e.target.getAttribute('data-arrayIndex')].title;
             editTitleSpan.textContent = 'Edit for ' + myLibrary[e.target.getAttribute('data-arrayIndex')].title;
             goToTop();
@@ -177,7 +178,7 @@ function addGame(title, genre, platform, status, hours, startDate) {
 
 function submitGame() {
 
-    if(titleField.value === "" || genreField.value === "" || platformField.value === "" || statusField.value === "") {
+    if(titleField.value === "") {
         return;
     }
     else {
@@ -211,36 +212,26 @@ function editGame() {
         let hours = editHoursField.value;
         let startDate = editStartField.value;
         let endDate = editEndField.value;
-        if(genre !== "") {
-            currentUserRef.child(currentEdit).update({
-                genre: genre
-            });
-        }
-        if(status !== "") {
-            currentUserRef.child(currentEdit).update({
-                status: status
-            });
-        }
-        if(platform !== "") {
-            currentUserRef.child(currentEdit).update({
-                platform: platform
-            });
-        }
-        if(hours !== "") {
-            currentUserRef.child(currentEdit).update({
-                hours: hours
-            });
-        }
-        if(startDate !== "") {
-            currentUserRef.child(currentEdit).update({
-                startDate: startDate
-            });
-        }
-        if(endDate !== "") {
-            currentUserRef.child(currentEdit).update({
-                endDate: endDate
-            });
-        }
+        
+        currentUserRef.child(currentEdit).update({
+            genre: genre
+        });
+        currentUserRef.child(currentEdit).update({
+            status: status
+        });
+        currentUserRef.child(currentEdit).update({
+            platform: platform
+        });
+        currentUserRef.child(currentEdit).update({
+            hours: hours
+        });
+        currentUserRef.child(currentEdit).update({
+            startDate: startDate
+        });
+        currentUserRef.child(currentEdit).update({
+            endDate: endDate
+        });
+
         currentUserRef.once('value', (snap) => {
             myLibrary = [];
             dbLibrary = Object.values(snap.val());
@@ -624,13 +615,17 @@ const droppedBtn = document.querySelector('#dropped-button');
 
 const editFormCloseBtn = document.querySelector('#edit-close-btn');
 const signBtn = document.querySelector('#sign-button');
-const signOutBtn = document.querySelector('#sign-out-button');
 const userImage = document.querySelector('#user-img');
 const body = document.querySelector('body');
+const yearSelect = document.querySelector('#year-select');
 
 const deleteConfBackground = document.querySelector('#delete-conf-background');
 const deleteConfBtn = document.querySelector('#delete-conf-btn');
 const deleteConfCloseBtn = document.querySelector('#delete-conf-close');
+
+const signoutBackground = document.querySelector('#signout-background');
+const signoutBtn = document.querySelector('#signout-btn');
+const signoutCloseBtn = document.querySelector('#signout-close');
 
 let totalHours = 0;
 let numOfGames = 0;
@@ -702,8 +697,6 @@ editDeleteBtn.addEventListener('click', (e) => {
 
     deleteConfBackground.classList.toggle('form-toggle-none');
     deleteConfBackground.classList.toggle('form-toggle-flex');
-
-    currentEvent = e;
 });
 
 searchBar.addEventListener('keydown', (e) => {
@@ -1027,6 +1020,12 @@ deleteConfBtn.addEventListener('click', () => {
     myLibrary.splice(currentEvent.target.getAttribute('data-arrayIndex'), 1);
     deleteConfBackground.classList.toggle('form-toggle-flex');
     deleteConfBackground.classList.toggle('form-toggle-none');
+
+    editFormTitle.classList.toggle('form-toggle-none');
+    editFormTitle.classList.toggle('form-toggle-flex');
+    editFormContainer.classList.toggle('form-toggle-none');
+    editFormContainer.classList.toggle('form-toggle-flex');
+    
     searchBar.value = "";
     resetGameList();
 });
@@ -1037,6 +1036,40 @@ deleteConfCloseBtn.addEventListener('click', () => {
     deleteConfBackground.classList.toggle('form-toggle-none');
 });
 
+signoutBtn.addEventListener('click', () => {
+
+    googleSignOut();
+    signoutBackground.classList.toggle('form-toggle-flex');
+    signoutBackground.classList.toggle('form-toggle-none');
+});
+
+signoutCloseBtn.addEventListener('click', () => {
+
+    signoutBackground.classList.toggle('form-toggle-flex');
+    signoutBackground.classList.toggle('form-toggle-none');
+});
+
+userImage.addEventListener('click', () => {
+    signoutBackground.classList.toggle('form-toggle-flex');
+    signoutBackground.classList.toggle('form-toggle-none');
+});
+
+
+
+// Fills year select menu
+
+let latestYear = new Date().getFullYear() + 1;
+let earliestYear = 2010;
+while (latestYear >= earliestYear) {
+    let dateOption = document.createElement('option');
+    dateOption.text = latestYear;
+    dateOption.value = latestYear;
+    yearSelect.add(dateOption);
+    latestYear -= 1;
+}
+let today = new Date().getFullYear();
+yearSelect.value = today;
+
 
 
 // Firebase Realtime Database Application
@@ -1044,14 +1077,10 @@ firebase.auth().onAuthStateChanged(function(user) {
 
     if (user) {
         currentUser = user;
-        currentUserID = user.email.substring(0, user.email.indexOf("@"));
-        if(currentUserID.includes(".")) {
-            currentUserID = currentUserID.replace(".", "-");
-        }
+        currentUserID = user.uid;
         currentUserRef = database.ref().child(currentUserID);
         let imgUrl = user.photoURL;
         signBtn.classList.toggle('display-none');
-        signOutBtn.classList.toggle('display-none');
         userImage.style.cssText = 'background-image: url(' + imgUrl + ')';
 
         currentUserRef.once('value', (snap) => {
