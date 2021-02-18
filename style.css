@@ -28,6 +28,12 @@ body {
     flex-direction: column;
 }
 
+button {
+    background: rgb(230, 230, 230);
+    border: none;
+    font-family: 'Galatea Light', sans-serif;
+}
+
 a {
     text-decoration: none;
     color: #f2f3ed;
@@ -108,16 +114,19 @@ a {
 }
 
 #add-button {
-    border-radius: 8px;
-    height: 27px;
+    border-radius: 30px;
+    height: 60px;
     width: 60px;
     background-color: #ce8626;
     color: black;
     cursor: pointer;
-    font-size: 13px;
+    font-size: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
+    bottom: 35px;
+    right: 20px;
 }
 
 #sign-button {
@@ -263,6 +272,9 @@ a {
 .delete-btn {
     background-color: lightcoral;
     margin-right: 20px;
+    height: 40px;
+    width: 120px;
+    border-radius: 5px;
 }
 
 .delete-btn:hover {
@@ -377,15 +389,6 @@ input {
     border-radius: 6px;
 }
 
-button {
-    height: 40px;
-    width: 120px;
-    background: rgb(230, 230, 230);
-    border: none;
-    border-radius: 5px;
-    font-family: 'Galatea Regular', sans-serif;
-}
-
 #submit:hover {
     cursor: pointer;
     background-color: #f2f3ed;
@@ -394,6 +397,9 @@ button {
 #submit {
     background-color: #ce8626;
     transition: all 1s;
+    height: 40px;
+    width: 120px;
+    border-radius: 5px;
 }
 
 
@@ -437,6 +443,9 @@ button {
 
 #edit-submit {
     background-color: #ce8626;
+    height: 40px;
+    width: 120px;
+    border-radius: 5px;
 }
 
 #edit-close-btn {
@@ -549,17 +558,17 @@ button {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 110px;
 }
 
 #total-hours-div {
     color: #f2f3ed;
-    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #total-games-div {
     color: #f2f3ed;
-    padding-right: 10px;
+    padding-left: 10px;
 }
 
 
@@ -736,13 +745,15 @@ button {
 
 #footer {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     font-size: 13px;
     width: 100%;
-    min-height: 45px;
-    background-color: #30354a;
-    margin-bottom: 20px;
+    min-height: 50px;
+    padding-bottom: 20px;
+    background-color: rgb(48, 53, 74);
+    position: fixed;
+    bottom: 0;
 }
 
 #patch-link {
@@ -879,12 +890,6 @@ button {
         margin: 0 10px 0 10px;
     }
 
-    #add-button {
-        margin-right: 10px;
-        font-size: 13px;
-        min-width: 60px;
-    }
-
     #form-container {
         width: 100%;
         min-height: 460px;
@@ -1002,5 +1007,15 @@ button {
 
     #go-back-link {
         margin: 0 15px 0px 15px;
+    }
+
+    #delete-conf-div {
+        width: 80%;
+        margin-left: -40%;
+    }
+
+    #signout-div {
+        width: 80%;
+        margin-left: -40%;
     }
 }

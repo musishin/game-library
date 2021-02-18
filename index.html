@@ -14,7 +14,6 @@
             font-weight: 100;
             src: local('Galatea Regular'), url('fonts/Galatea Regular Regular.woff') format('woff');
             }
-
             @font-face {
             font-family: 'Galatea Light';
             font-style: normal;
@@ -33,13 +32,10 @@
                         <span id="title-span"><a href="index.html">Game Library</a></span>
                     </div>
                     <div id="top-button-container">
-                        <div id="year-select-div">
-                            <select name="year-select" id="year-select">
-                                <!--<option value="">Year</option>-->
-                            </select>
-                        </div>
+                        <!--<div id="year-select-div">
+                            <select name="year-select" id="year-select"></select>
+                        </div>-->
                         <button type="button" id="sign-button" class="" onclick="googleSignIn()">Sign In</button>
-                        <!--<button type="button" id="sign-out-button" class="display-none" onclick="googleSignOut()">Sign Out</button>-->
                         <div id="user-img" class=""></div>
                     </div>
                 </div>
@@ -58,7 +54,6 @@
                         </select>
                     </div>
                     <input type="text" id="search" name="search" placeholder="Search by Title">
-                    <button type="button" id="add-button" onclick="goToTop()">+Add</button>
                 </div>
             </div>
 
@@ -276,8 +271,6 @@
                 </div>
             </div>
 
-
-
             <div id="game-container-title">
                 <div id="title-tab-div">
                     <span>Game List</span>
@@ -290,10 +283,14 @@
             </div>
             <div id="games-container"></div>
             <div id="game-stat-div">
-                <div id="total-hours-div"></div>
                 <div id="total-games-div"></div>
+                <div id="total-hours-div"></div>
             </div>
-            <div id="footer"><a id="patch-link" href="patch.html">Read the Patch Notes!</a></div>
+            <!--<div id="footer">
+                <a id="patch-link" href="patch.html">Patch Notes!</a>
+                <button type="button" id="add-button" onclick="goToTop()">+Add</button>
+            </div>-->
+            <button type="button" id="add-button" onclick="goToTop()">+</button>
         </div>
     </body>
 

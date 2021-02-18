@@ -162,7 +162,7 @@ function displayGames() {
     }
 }
 
-function addGame(title, genre, platform, status, hours, startDate) {
+function addGame(title, genre, platform, status, hours, startDate, endDate) {
 
     let showCard;
     if(allBtn.classList.contains('tab-toggle-text') || nowBtn.classList.contains('tab-toggle-text')) {
@@ -171,9 +171,9 @@ function addGame(title, genre, platform, status, hours, startDate) {
     else {
         showCard = false;
     }
-    let newGame = new Game(title, genre, platform, status, showCard, hours, startDate);
+    let newGame = new Game(title, genre, platform, status, showCard, hours, startDate, endDate);
     myLibrary.push(newGame);
-    addGameToDb(title, genre, platform, showCard, status, hours, startDate);
+    addGameToDb(title, genre, platform, showCard, status, hours, startDate, endDate);
 }
 
 function submitGame() {
@@ -188,7 +188,8 @@ function submitGame() {
         let status = statusField.value;
         let hours = hoursField.value;
         let startDate = startDateField.value;
-        addGame(title, genre, platform, status, hours, startDate);
+        let endDate = endDateField.value;
+        addGame(title, genre, platform, status, hours, startDate, endDate);
 
         resetGameList();
         // resets the form fields after submitting.
@@ -197,6 +198,8 @@ function submitGame() {
         platformField.value = "";
         statusField.value = "";
         hoursField.value = "";
+        startDateField.value = "";
+        endDateField.value = "";
     }
 }
 
@@ -354,7 +357,7 @@ function resetGameList() {
     displayGames();
 }
 
-function addGameToDb(title, genre, platform, showCard, status, hours, startDate) {
+function addGameToDb(title, genre, platform, showCard, status, hours, startDate, endDate) {
 
     if(currentUser) {
         currentUserRef.child(title).set({
@@ -364,7 +367,8 @@ function addGameToDb(title, genre, platform, showCard, status, hours, startDate)
             equalsSearch: showCard,
             status: status,
             hours: hours,
-            startDate: startDate
+            startDate: startDate,
+            endDate: endDate
         });
     } else {
         console.log("No user!");
@@ -1057,8 +1061,7 @@ userImage.addEventListener('click', () => {
 
 
 // Fills year select menu
-
-let latestYear = new Date().getFullYear() + 1;
+/*let latestYear = new Date().getFullYear() + 1;
 let earliestYear = 2010;
 while (latestYear >= earliestYear) {
     let dateOption = document.createElement('option');
@@ -1068,7 +1071,7 @@ while (latestYear >= earliestYear) {
     latestYear -= 1;
 }
 let today = new Date().getFullYear();
-yearSelect.value = today;
+yearSelect.value = today;*/
 
 
 
