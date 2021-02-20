@@ -32,9 +32,9 @@
                         <span id="title-span"><a href="index.html">Game Library</a></span>
                     </div>
                     <div id="top-button-container">
-                        <!--<div id="year-select-div">
+                        <div id="year-select-div">
                             <select name="year-select" id="year-select"></select>
-                        </div>-->
+                        </div>
                         <button type="button" id="sign-button" class="" onclick="googleSignIn()">Sign In</button>
                         <div id="user-img" class=""></div>
                     </div>
@@ -227,6 +227,11 @@
                                 <option value="Dropped">Dropped</option>
                             </select>
                         </div>
+                        <div class="form-element form-element-margin select-div">
+                            <select id="year-list" name="year-list">
+                                <option value="">List Year</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-input-row">
                         <div class="form-element form-element-margin form-element-margin-row-two">
@@ -243,6 +248,7 @@
                     </div>
                 </div>
                 <button type="button" id="submit">Submit</button>
+                <button type="button" id="form-close-btn">close</button>
             </form>
 
             <!--Delete confirmation-->
@@ -284,13 +290,16 @@
             <div id="games-container"></div>
             <div id="game-stat-div">
                 <div id="total-games-div"></div>
+                <div>&nbspgames</div>
+                <div id="played-for" class="form-toggle-none">&nbspplayed for&nbsp</div>
                 <div id="total-hours-div"></div>
+                <div id="hours-for" class="form-toggle-none">&nbsphours</div>
             </div>
             <!--<div id="footer">
                 <a id="patch-link" href="patch.html">Patch Notes!</a>
                 <button type="button" id="add-button" onclick="goToTop()">+Add</button>
             </div>-->
-            <button type="button" id="add-button" onclick="goToTop()">+</button>
+            <button type="button" id="add-button" class="form-toggle-flex" onclick="goToTop()">+</button>
         </div>
     </body>
 

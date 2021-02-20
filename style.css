@@ -121,7 +121,6 @@ a {
     color: black;
     cursor: pointer;
     font-size: 25px;
-    display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -224,7 +223,7 @@ a {
 }
 
 #year-select {
-    width: 70px;
+    width:70px;
     margin-right: 10px;
     font-family: 'Galatea Light', sans-serif;
 }
@@ -402,6 +401,18 @@ input {
     border-radius: 5px;
 }
 
+#form-close-btn {
+    font-size: 12px;
+    width: 60px;
+    height: 20px;
+    background-color: #30354a;
+    color: #f2f3ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
 
 
 /* Edit form */
@@ -452,7 +463,7 @@ input {
     font-size: 12px;
     width: 60px;
     height: 20px;
-    background-color: #33333f;
+    background-color: #30354a;
     color: #f2f3ed;
     display: flex;
     justify-content: center;
@@ -557,17 +568,16 @@ input {
 #game-stat-div {
     width: 100%;
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 110px;
+    margin-bottom: 50px;
+    color: #f2f3ed;
 }
 
 #total-hours-div {
-    color: #f2f3ed;
-    padding-right: 10px;
+    color: #ce8626;
 }
 
 #total-games-div {
-    color: #f2f3ed;
+    color: #ce8626;
     padding-left: 10px;
 }
 
@@ -893,7 +903,7 @@ input {
     #form-container {
         width: 100%;
         min-height: 460px;
-        height: 460px;
+        height: 580px;
         flex-direction: column;
         justify-content: space-evenly;
         border-radius: 0;
@@ -984,7 +994,7 @@ input {
 
     #games-container {
         width: 100%;
-        margin-bottom: 0;
+        margin-bottom: 20px;
         display: flex;
         flex-direction: column;
         justify-content: center;

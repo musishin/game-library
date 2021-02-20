@@ -79,7 +79,6 @@ function displayGames() {
         let gameTitleContainer = document.createElement('div');
         let gameDeleteMenuContainer = document.createElement('div');
         let titleDeleteContainer = document.createElement('div');
-        let editBtn = document.createElement('button');
         let editImg = document.createElement('img');
 
         editImg.src = "./images/edit-property.png";
@@ -153,6 +152,7 @@ function displayGames() {
                 formContainer.classList.add('form-toggle-none');
                 formTitle.classList.remove('form-toggle-flex');
                 formTitle.classList.add('form-toggle-none');
+
                 editFormTitle.classList.toggle('form-toggle-none');
                 editFormTitle.classList.toggle('form-toggle-flex');
                 editFormContainer.classList.toggle('form-toggle-none');
@@ -178,7 +178,7 @@ function addGame(title, genre, platform, status, hours, startDate, endDate) {
 
 function submitGame() {
 
-    if(titleField.value === "") {
+    if(titleField.value === "" || listYearField.value === "") {
         return;
     }
     else {
@@ -273,8 +273,10 @@ function resetGameList() {
             }
             numOfGames++;
         }
-        totalHoursDiv.textContent = "Total Hours: " + totalHours;
-        totalGamesDiv.textContent = numOfGames + " games";
+        totalHoursDiv.textContent = totalHours;
+        totalGamesDiv.textContent = numOfGames;
+        document.querySelector('#played-for').classList.remove('form-toggle-none');
+        document.querySelector('#hours-for').classList.remove('form-toggle-none');
     }
     else if(nowBtn.classList.contains('tab-toggle-text')) {
         for(let arrayIndex = 0; arrayIndex < myLibrary.length; arrayIndex++) {
@@ -292,7 +294,9 @@ function resetGameList() {
             }
         }
         totalHoursDiv.textContent = "";
-        totalGamesDiv.textContent = numOfGames + " games";
+        totalGamesDiv.textContent = numOfGames;
+        document.querySelector('#played-for').classList.add('form-toggle-none');
+        document.querySelector('#hours-for').classList.add('form-toggle-none');
     }
     else if(completedBtn.classList.contains('tab-toggle-text')) {
         for(let arrayIndex = 0; arrayIndex < myLibrary.length; arrayIndex++) {
@@ -309,8 +313,10 @@ function resetGameList() {
                 myLibrary[arrayIndex].equalsSearch = false;
             }
         }
-        totalHoursDiv.textContent = "Total Hours: " + totalHours;
-        totalGamesDiv.textContent = numOfGames + " games";
+        totalHoursDiv.textContent = totalHours;
+        totalGamesDiv.textContent = numOfGames;
+        document.querySelector('#played-for').classList.remove('form-toggle-none');
+        document.querySelector('#hours-for').classList.remove('form-toggle-none');
     }
     else if(waitBtn.classList.contains('tab-toggle-text')) {
         for(let arrayIndex = 0; arrayIndex < myLibrary.length; arrayIndex++) {
@@ -328,7 +334,9 @@ function resetGameList() {
             }
         }
         totalHoursDiv.textContent = "";
-        totalGamesDiv.textContent = numOfGames + " games";
+        totalGamesDiv.textContent = numOfGames;
+        document.querySelector('#played-for').classList.add('form-toggle-none');
+        document.querySelector('#hours-for').classList.add('form-toggle-none');
     }
     else if(droppedBtn.classList.contains('tab-toggle-text')) {
         for(let arrayIndex = 0; arrayIndex < myLibrary.length; arrayIndex++) {
@@ -346,7 +354,9 @@ function resetGameList() {
             }
         }
         totalHoursDiv.textContent = "";
-        totalGamesDiv.textContent = numOfGames + " games";
+        totalGamesDiv.textContent = numOfGames;
+        document.querySelector('#played-for').classList.add('form-toggle-none');
+        document.querySelector('#hours-for').classList.add('form-toggle-none');
     }
 
     if(category !== "") {
@@ -360,7 +370,7 @@ function resetGameList() {
 function addGameToDb(title, genre, platform, showCard, status, hours, startDate, endDate) {
 
     if(currentUser) {
-        currentUserRef.child(title).set({
+        currentUserRef.child(listYearField.value).child(title).set({
             title: title,
             genre: genre,
             platform: platform,
@@ -373,6 +383,8 @@ function addGameToDb(title, genre, platform, showCard, status, hours, startDate,
     } else {
         console.log("No user!");
     }
+
+    listYearField.value = "";
 }
 
 // Takes value snapshot of user library on database and converts it into objects to fill myLibrary[].
@@ -593,6 +605,7 @@ const statusField = document.querySelector('#status');
 const hoursField = document.querySelector('#hours');
 const startDateField = document.querySelector('#start-date');
 const endDateField = document.querySelector('#end-date');
+const listYearField = document.querySelector('#year-list');
 
 const editStatusField = document.querySelector('#edit-status');
 const editGenreField = document.querySelector('#edit-genre');
@@ -604,9 +617,11 @@ const editEndField = document.querySelector('#edit-end-date');
 const searchBar = document.querySelector('#search');
 const addBtn = document.querySelector('#add-button');
 const catSortSelect = document.querySelector('#cat-sort');
+const yearSelect = document.querySelector('#year-select');
 
 const formContainer = document.querySelector('#form-container');
 const formTitle = document.querySelector('#form-title');
+const addFormCloseBtn = document.querySelector('#form-close-btn');
 const editFormTitle = document.querySelector('#edit-form-title');
 const editTitleSpan = document.querySelector('#edit-title-span');
 const editFormContainer = document.querySelector('#edit-form-container');
@@ -621,7 +636,6 @@ const editFormCloseBtn = document.querySelector('#edit-close-btn');
 const signBtn = document.querySelector('#sign-button');
 const userImage = document.querySelector('#user-img');
 const body = document.querySelector('body');
-const yearSelect = document.querySelector('#year-select');
 
 const deleteConfBackground = document.querySelector('#delete-conf-background');
 const deleteConfBtn = document.querySelector('#delete-conf-btn');
@@ -682,6 +696,16 @@ editFormCloseBtn.addEventListener('click', () => {
     editFormContainer.classList.toggle('form-toggle-flex');
 });
 
+addFormCloseBtn.addEventListener('click', () => {
+
+    formTitle.classList.toggle('form-toggle-none');
+    formTitle.classList.toggle('form-toggle-flex');
+    formContainer.classList.toggle('form-toggle-none');
+    formContainer.classList.toggle('form-toggle-flex');
+    addBtn.classList.add('form-toggle-flex');
+    addBtn.classList.remove('form-toggle-none');
+});
+
 catSortSelect.addEventListener('change', (e) => {
 
     category = e.target.value;
@@ -694,6 +718,18 @@ catSortSelect.addEventListener('change', (e) => {
         }
         displayGames();
     }
+});
+
+yearSelect.addEventListener('change', (e) => {
+
+    year = e.target.value;
+
+    currentUserRef.child(year).once('value', (snap) => {
+        myLibrary = [];
+        dbLibrary = Object.values(snap.val());
+        createLibrary(dbLibrary);
+        resetGameList();
+    });
 });
 
 // Eventlistener for delete button on cards.
@@ -900,10 +936,14 @@ addBtn.addEventListener('click', () => {
     editFormTitle.classList.add('form-toggle-none');
     editFormContainer.classList.remove('form-toggle-flex');
     editFormContainer.classList.add('form-toggle-none');
+
     formContainer.classList.toggle('form-toggle-none');
     formContainer.classList.toggle('form-toggle-flex');
     formTitle.classList.toggle('form-toggle-none');
     formTitle.classList.toggle('form-toggle-flex');
+
+    addBtn.classList.remove('form-toggle-flex');
+    addBtn.classList.add('form-toggle-none');
 });
 
 // Eventlisteners for game status tabs.
@@ -1054,24 +1094,41 @@ signoutCloseBtn.addEventListener('click', () => {
 });
 
 userImage.addEventListener('click', () => {
+
     signoutBackground.classList.toggle('form-toggle-flex');
     signoutBackground.classList.toggle('form-toggle-none');
 });
 
+window.addEventListener('scroll', () => {
+
+    if(window.scrollY <= 50 && !formContainer.classList.contains('form-toggle-flex')) {
+        addBtn.classList.remove('form-toggle-none');
+        addBtn.classList.add('form-toggle-flex');
+    } else {
+        addBtn.classList.remove('form-toggle-flex');
+        addBtn.classList.add('form-toggle-none');
+    }
+});
 
 
-// Fills year select menu
-/*let latestYear = new Date().getFullYear() + 1;
-let earliestYear = 2010;
+
+// Fills year list select menus
+let latestYear = new Date().getFullYear() + 1;
+let earliestYear = 2019;
 while (latestYear >= earliestYear) {
     let dateOption = document.createElement('option');
     dateOption.text = latestYear;
     dateOption.value = latestYear;
+    let dateOptionForm = document.createElement('option');
+    dateOptionForm.text = latestYear;
+    dateOptionForm.value = latestYear;
+    listYearField.add(dateOptionForm);
     yearSelect.add(dateOption);
     latestYear -= 1;
 }
 let today = new Date().getFullYear();
-yearSelect.value = today;*/
+yearSelect.value = today;
+listYearField.value = today;
 
 
 
@@ -1086,7 +1143,7 @@ firebase.auth().onAuthStateChanged(function(user) {
         signBtn.classList.toggle('display-none');
         userImage.style.cssText = 'background-image: url(' + imgUrl + ')';
 
-        currentUserRef.once('value', (snap) => {
+        currentUserRef.child(yearSelect.value).once('value', (snap) => {
             myLibrary = [];
             dbLibrary = Object.values(snap.val());
             createLibrary(dbLibrary);
