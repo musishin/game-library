@@ -157,6 +157,9 @@ function displayGames() {
                 editFormTitle.classList.toggle('form-toggle-flex');
                 editFormContainer.classList.toggle('form-toggle-none');
                 editFormContainer.classList.toggle('form-toggle-flex');
+
+                addBtn.classList.add('form-toggle-flex');
+                addBtn.classList.remove('form-toggle-none');
             }
         });
     }
@@ -1102,7 +1105,7 @@ userImage.addEventListener('click', () => {
     signoutBackground.classList.toggle('form-toggle-none');
 });
 
-window.addEventListener('scroll', () => {
+/*window.addEventListener('scroll', () => {
 
     if(window.scrollY <= 50 && !formContainer.classList.contains('form-toggle-flex')) {
         addBtn.classList.remove('form-toggle-none');
@@ -1111,7 +1114,7 @@ window.addEventListener('scroll', () => {
         addBtn.classList.remove('form-toggle-flex');
         addBtn.classList.add('form-toggle-none');
     }
-});
+});*/
 
 
 

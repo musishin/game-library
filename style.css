@@ -300,12 +300,13 @@ a {
     font-size: 23px;
     margin: 0px 0px 10px 0px;
     justify-content: center;
+    align-items: center;
     color: #f2f3ed;
 }
 
 #form-container {
     width: 1200px;
-    min-height: 230px;
+    min-height: 290px;
     margin: 0px 0px 50px 0px;
     border-radius: 10px;
     flex-direction: column;
@@ -932,6 +933,10 @@ input {
 
     .form-element-margin-row-two {
         margin: 0 0 6px 0;
+    }
+
+    .form-element-margin-year-select {
+        margin: 0 0 25px 0;
     }
 
     .date-input {
