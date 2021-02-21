@@ -677,6 +677,7 @@ googleSignOut = () => {
         myLibrary = [];
         resetGameList();
         totalGamesDiv.textContent = "";
+        document.querySelector('#game-stat-games-text').classList.add('display-none');
     }).catch((error) => {
     console.log(error);
     });
