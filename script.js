@@ -216,26 +216,26 @@ function editGame() {
         let startDate = editStartField.value;
         let endDate = editEndField.value;
         
-        currentUserRef.child(currentEdit).update({
+        currentUserRef.child(yearSelect.value).child(currentEdit).update({
             genre: genre
         });
-        currentUserRef.child(currentEdit).update({
+        currentUserRef.child(yearSelect.value).child(currentEdit).update({
             status: status
         });
-        currentUserRef.child(currentEdit).update({
+        currentUserRef.child(yearSelect.value).child(currentEdit).update({
             platform: platform
         });
-        currentUserRef.child(currentEdit).update({
+        currentUserRef.child(yearSelect.value).child(currentEdit).update({
             hours: hours
         });
-        currentUserRef.child(currentEdit).update({
+        currentUserRef.child(yearSelect.value).child(currentEdit).update({
             startDate: startDate
         });
-        currentUserRef.child(currentEdit).update({
+        currentUserRef.child(yearSelect.value).child(currentEdit).update({
             endDate: endDate
         });
 
-        currentUserRef.once('value', (snap) => {
+        currentUserRef.child(yearSelect.value).once('value', (snap) => {
             myLibrary = [];
             dbLibrary = Object.values(snap.val());
             createLibrary(dbLibrary);
@@ -720,15 +720,18 @@ catSortSelect.addEventListener('change', (e) => {
     }
 });
 
-yearSelect.addEventListener('change', (e) => {
+yearSelect.addEventListener('change', () => {
 
-    year = e.target.value;
-
-    currentUserRef.child(year).once('value', (snap) => {
-        myLibrary = [];
-        dbLibrary = Object.values(snap.val());
-        createLibrary(dbLibrary);
-        resetGameList();
+    currentUserRef.child(yearSelect.value).once('value', (snap) => {
+        if(snap.exists()) {
+            myLibrary = [];
+            let dbLibrary = Object.values(snap.val());
+            createLibrary(dbLibrary);
+            resetGameList();
+        } else {
+            myLibrary = [];
+            resetGameList();
+        }
     });
 });
 
@@ -1060,7 +1063,7 @@ droppedBtn.addEventListener('click', () => {
 
 deleteConfBtn.addEventListener('click', () => {
 
-    currentUserRef.child(myLibrary[currentEvent.target.getAttribute('data-arrayIndex')].title).remove();
+    currentUserRef.child(yearSelect.value).child(myLibrary[currentEvent.target.getAttribute('data-arrayIndex')].title).remove();
     myLibrary.splice(currentEvent.target.getAttribute('data-arrayIndex'), 1);
     deleteConfBackground.classList.toggle('form-toggle-flex');
     deleteConfBackground.classList.toggle('form-toggle-none');
@@ -1112,6 +1115,8 @@ window.addEventListener('scroll', () => {
 
 
 
+// ***** ON PAGE LOAD ***** //
+
 // Fills year list select menus
 let latestYear = new Date().getFullYear() + 1;
 let earliestYear = 2019;
@@ -1131,7 +1136,6 @@ yearSelect.value = today;
 listYearField.value = today;
 
 
-
 // Firebase Realtime Database Application
 firebase.auth().onAuthStateChanged(function(user) {
 
@@ -1145,7 +1149,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
         currentUserRef.child(yearSelect.value).once('value', (snap) => {
             myLibrary = [];
-            dbLibrary = Object.values(snap.val());
+            let dbLibrary = Object.values(snap.val());
             createLibrary(dbLibrary);
             resetGameList();
         });
