@@ -673,11 +673,10 @@ googleSignOut = () => {
 
     firebase.auth().signOut().then(() => {
         console.log("Sign-out successful.");
-        signBtn.classList.toggle('display-none');
-        signOutBtn.classList.toggle('display-none');
         userImage.style.cssText = 'display: none';
         myLibrary = [];
         resetGameList();
+        totalGamesDiv.textContent = "";
     }).catch((error) => {
     console.log(error);
     });
@@ -1147,7 +1146,6 @@ firebase.auth().onAuthStateChanged(function(user) {
         currentUserID = user.uid;
         currentUserRef = database.ref().child(currentUserID);
         let imgUrl = user.photoURL;
-        signBtn.classList.toggle('display-none');
         userImage.style.cssText = 'background-image: url(' + imgUrl + ')';
 
         currentUserRef.child(yearSelect.value).once('value', (snap) => {
@@ -1155,9 +1153,11 @@ firebase.auth().onAuthStateChanged(function(user) {
             let dbLibrary = Object.values(snap.val());
             createLibrary(dbLibrary);
             resetGameList();
+            document.querySelector('#game-stat-games-text').classList.remove('display-none');
         });
     } else {
         userImage.classList.toggle('display-none');
+        signBtn.classList.toggle('display-none');
         currentUser = user;
     }
 });
