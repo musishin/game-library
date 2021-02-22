@@ -184,12 +184,19 @@ function displayGames() {
 
         notesDiv.addEventListener('keydown', (e) => {
 
-            if(e.key.length > 1) {
+            if(e.key === "Backspace") {
+                myLibrary[e.target.getAttribute('data-arrayIndex')].notes = notesDiv.value.substring(0, notesDiv.value.length - 1);
+                currentUserRef.child(yearSelect.value).child(myLibrary[e.target.getAttribute('data-arrayIndex')].title).update({
+                    notes: notesDiv.value.substring(0, notesDiv.value.length - 1)
+                });
+            }
+            else if(e.key.length > 1) {
                 myLibrary[e.target.getAttribute('data-arrayIndex')].notes = notesDiv.value;
                 currentUserRef.child(yearSelect.value).child(myLibrary[e.target.getAttribute('data-arrayIndex')].title).update({
                     notes: notesDiv.value
                 });
-            } else {
+            }
+            else {
                 myLibrary[e.target.getAttribute('data-arrayIndex')].notes = notesDiv.value + e.key;
                 currentUserRef.child(yearSelect.value).child(myLibrary[e.target.getAttribute('data-arrayIndex')].title).update({
                     notes: notesDiv.value + e.key

@@ -2,17 +2,7 @@
 
 ### <a href="https://mygamelibrary.net">Live Demo!</a>
 
-This is a webapp that allows you to record and keep track of your video game library. For each game it will allow you to input information including:
-
-1. Title
-2. Genre
-3. Platform
-4. Status of the game in relation to the user's progress of it
-5. Hours played
-6. Date started
-7. Date completed
-
-The games listed can be filtered based on the status of the game in the library. The search function allows further narrowing down of the list as well.
+This is a webapp that allows you to record and keep track of your video game library. For each game it will allow you to input and display information about the game and the user's progress of completion. There are several other features such as adding notes to each game and filtering via several different categories.
 
 This webapp is built for both desktop and mobile browsers.
 
@@ -24,7 +14,11 @@ Currently, the webapp is using Google Firebase services for authentication and s
 
 ## Current Features
 
-Currently, the app allows basic storing of games and displaying of information in relation to the progress of completion for each game. There are statistics at the bottom of the list that shows the current total hours for completed games and total number of games for each category and the user is also able to delete and edit games in the list. Lastly, the web app is able to keep lists separated by year so the user can keep yearly logs of their games and view yearly stats.
+1. Basic storing of games and displaying of information of the game and progress of completion for each game.
+2. Statistics at the bottom of the list that shows the current total hours for completed games and total number of games for each category.
+3. Able to keep lists separated by year so the user can keep yearly logs of their games and view yearly stats.
+4. Notes are able to be added for every game.
+5. Search bar filters by game titles.
 
 
 ## Important New Takeaways
@@ -38,10 +32,9 @@ Currently, the app allows basic storing of games and displaying of information i
 
 ## Planned Future Updates
 
-1. Allow user to add notes to each game.
-2. Add ability to type in custom genre/platform.
-3. Make input fields taller.
-4. Add friend feature allowing viewing of friends' lists.
-5. Add cover art.
-6. Milestone achievements?
-7. Possibly more.
+1. Add ability to type in custom genre/platform.
+2. Make input fields taller.
+3. Add friend feature allowing viewing of friends' lists.
+4. Add cover art.
+5. Milestone achievements?
+6. Possibly more.
