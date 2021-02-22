@@ -286,9 +286,20 @@ a {
     width: 15px;
     height: 15px;
     padding: 4px;
+    margin-left: 5px;
 }
 
 .edit-button:hover {
+    cursor: pointer;
+}
+
+.note-button {
+    width: 15px;
+    height: 15px;
+    padding: 4px;
+}
+
+.note-button:hover {
     cursor: pointer;
 }
 
@@ -516,6 +527,7 @@ input {
 .game-square {
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-color: #70778b;
     width: 373px;
     min-height: 85px;
@@ -531,12 +543,19 @@ input {
     font-size: 13px;
     position: relative;
     height: auto;
+    width: 100%;
     display: flex;
     align-items: flex-start;
+    margin-bottom: 10px;
 }
 
 .first-info-container {
-    margin-right: 40px;
+    /*margin-right: 40px;*/
+    width: 50%;
+}
+
+.second-info-container {
+    width: 50%;
 }
 
 .title-delete-container {
@@ -562,6 +581,17 @@ input {
     position: relative;
 }
 
+.notes-div {
+    width: 100%;
+    height: 12em;
+    max-width: 97%;
+    background-color: rgb(242, 243, 237, 0.3);
+    color: #f2f3ed;
+    border-radius: 5px;
+    border: none;
+    font-size: 13px;
+}
+
 
 
 /* Game stats */
@@ -569,7 +599,7 @@ input {
 #game-stat-div {
     width: 100%;
     display: flex;
-    margin-bottom: 50px;
+    margin-bottom: 70px;
     color: #f2f3ed;
 }
 
@@ -999,7 +1029,6 @@ input {
 
     #games-container {
         width: 100%;
-        margin-bottom: 20px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -1014,6 +1043,10 @@ input {
         border-radius: 0;
         padding: 10px 0 10px 0;
         background-color: #30354a;
+    }
+
+    .notes-div {
+        background-color: #70778b;
     }
 
     .patch-div {

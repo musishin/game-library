@@ -1,4 +1,4 @@
-function Game(title, genre, platform, status, equalsSearch, hoursPlayed, startDate, endDate) {
+function Game(title, genre, platform, status, equalsSearch, hoursPlayed, startDate, endDate, notes) {
 
     this.title = title;
     this.genre = genre;
@@ -8,6 +8,7 @@ function Game(title, genre, platform, status, equalsSearch, hoursPlayed, startDa
     this.startDate = startDate;
     this.endDate = endDate;
     this.hoursPlayed = hoursPlayed;
+    this.notes = notes;
 }
 
 Game.prototype.writeInfoFirst = function() {
@@ -80,25 +81,39 @@ function displayGames() {
         let gameDeleteMenuContainer = document.createElement('div');
         let titleDeleteContainer = document.createElement('div');
         let editImg = document.createElement('img');
+        let noteImg = document.createElement('img');
+        let notesDiv = document.createElement('textarea');
 
         editImg.src = "./images/edit-property.png";
         editImg.classList.add('edit-button');
         editImg.setAttribute('data-arrayIndex', arrayIndex);
 
+        noteImg.src = "./images/notepad.png";
+        noteImg.classList.add('note-button');
+        noteImg.setAttribute('data-arrayIndex', arrayIndex);
+
+        notesDiv.classList.add('notes-div');
+        notesDiv.classList.add('display-none');
+        notesDiv.setAttribute('data-arrayIndex', arrayIndex);
+
         gameSquare.classList.add('game-square');
         gameInfoContainer.classList.add('game-info-container');
         firstInfoContainer.classList.add('first-info-container');
+        secondInfoContainer.classList.add('second-info-container');
         gameTitleContainer.classList.add('game-title-container');
         gameDeleteMenuContainer.classList.add('game-delete-menu-container');
         titleDeleteContainer.classList.add('title-delete-container');
 
         gameTitleContainer.textContent = myLibrary[arrayIndex].title;
+        notesDiv.value = myLibrary[arrayIndex].notes;
 
         titleDeleteContainer.appendChild(gameTitleContainer);
         titleDeleteContainer.appendChild(gameDeleteMenuContainer);
+        gameDeleteMenuContainer.appendChild(noteImg);
         gameDeleteMenuContainer.appendChild(editImg);
         gameSquare.appendChild(titleDeleteContainer);
         gameSquare.appendChild(gameInfoContainer);
+        gameSquare.appendChild(notesDiv);
         gameInfoContainer.appendChild(firstInfoContainer);
         gameInfoContainer.appendChild(secondInfoContainer);
         firstInfoContainer.textContent = myLibrary[arrayIndex].writeInfoFirst();
@@ -162,10 +177,29 @@ function displayGames() {
                 addBtn.classList.remove('form-toggle-none');
             }
         });
+
+        noteImg.addEventListener('click', (e) => {
+            notesDiv.classList.toggle('display-none');
+        });
+
+        notesDiv.addEventListener('keydown', (e) => {
+
+            if(e.key.length > 1) {
+                myLibrary[e.target.getAttribute('data-arrayIndex')].notes = notesDiv.value;
+                currentUserRef.child(yearSelect.value).child(myLibrary[e.target.getAttribute('data-arrayIndex')].title).update({
+                    notes: notesDiv.value
+                });
+            } else {
+                myLibrary[e.target.getAttribute('data-arrayIndex')].notes = notesDiv.value + e.key;
+                currentUserRef.child(yearSelect.value).child(myLibrary[e.target.getAttribute('data-arrayIndex')].title).update({
+                    notes: notesDiv.value + e.key
+                });
+            }
+        });
     }
 }
 
-function addGame(title, genre, platform, status, hours, startDate, endDate) {
+function addGame(title, genre, platform, status, hours, startDate, endDate, notes) {
 
     let showCard;
     if(allBtn.classList.contains('tab-toggle-text') || nowBtn.classList.contains('tab-toggle-text')) {
@@ -174,9 +208,9 @@ function addGame(title, genre, platform, status, hours, startDate, endDate) {
     else {
         showCard = false;
     }
-    let newGame = new Game(title, genre, platform, status, showCard, hours, startDate, endDate);
+    let newGame = new Game(title, genre, platform, status, showCard, hours, startDate, endDate, notes);
     myLibrary.push(newGame);
-    addGameToDb(title, genre, platform, showCard, status, hours, startDate, endDate);
+    addGameToDb(title, genre, platform, showCard, status, hours, startDate, endDate, notes);
 }
 
 function submitGame() {
@@ -192,7 +226,8 @@ function submitGame() {
         let hours = hoursField.value;
         let startDate = startDateField.value;
         let endDate = endDateField.value;
-        addGame(title, genre, platform, status, hours, startDate, endDate);
+        let notes = "";
+        addGame(title, genre, platform, status, hours, startDate, endDate, notes);
 
         resetGameList();
         // resets the form fields after submitting.
@@ -370,7 +405,7 @@ function resetGameList() {
     displayGames();
 }
 
-function addGameToDb(title, genre, platform, showCard, status, hours, startDate, endDate) {
+function addGameToDb(title, genre, platform, showCard, status, hours, startDate, endDate, notes) {
 
     if(currentUser) {
         currentUserRef.child(listYearField.value).child(title).set({
@@ -381,20 +416,21 @@ function addGameToDb(title, genre, platform, showCard, status, hours, startDate,
             status: status,
             hours: hours,
             startDate: startDate,
-            endDate: endDate
+            endDate: endDate,
+            notes: notes
         });
     } else {
         console.log("No user!");
     }
 
-    listYearField.value = "";
+    listYearField.value = yearSelect.value;
 }
 
 // Takes value snapshot of user library on database and converts it into objects to fill myLibrary[].
 function createLibrary(dbLibrary) {
 
     for(let arrayIndex = 0; arrayIndex < dbLibrary.length; arrayIndex++) {
-        let newGame = new Game(dbLibrary[arrayIndex].title, dbLibrary[arrayIndex].genre, dbLibrary[arrayIndex].platform, dbLibrary[arrayIndex].status, dbLibrary[arrayIndex].equalsSearch, dbLibrary[arrayIndex].hours, dbLibrary[arrayIndex].startDate, dbLibrary[arrayIndex].endDate);
+        let newGame = new Game(dbLibrary[arrayIndex].title, dbLibrary[arrayIndex].genre, dbLibrary[arrayIndex].platform, dbLibrary[arrayIndex].status, dbLibrary[arrayIndex].equalsSearch, dbLibrary[arrayIndex].hours, dbLibrary[arrayIndex].startDate, dbLibrary[arrayIndex].endDate, dbLibrary[arrayIndex].notes);
         myLibrary.push(newGame);
     }
 }
@@ -676,8 +712,7 @@ googleSignOut = () => {
         userImage.style.cssText = 'display: none';
         myLibrary = [];
         resetGameList();
-        totalGamesDiv.textContent = "";
-        document.querySelector('#game-stat-games-text').classList.add('display-none');
+        totalGamesDiv.textContent = "0";
     }).catch((error) => {
     console.log(error);
     });
@@ -1154,11 +1189,11 @@ firebase.auth().onAuthStateChanged(function(user) {
             let dbLibrary = Object.values(snap.val());
             createLibrary(dbLibrary);
             resetGameList();
-            document.querySelector('#game-stat-games-text').classList.remove('display-none');
         });
     } else {
         userImage.classList.toggle('display-none');
         signBtn.classList.toggle('display-none');
+        totalGamesDiv.textContent = "0";
         currentUser = user;
     }
 });
