@@ -11,6 +11,7 @@ function Game(title, genre, platform, status, equalsSearch, hoursPlayed, startDa
     this.notes = notes;
 }
 
+// Game function to print the first column of information on the game card. Includes the genre, platform, and current play status of game.
 Game.prototype.writeInfoFirst = function() {
 
     return "Genre: " + this.genre + "\n" + 
@@ -18,6 +19,7 @@ Game.prototype.writeInfoFirst = function() {
            "Status: " + this.status;
 }
 
+// Game function to print the second column of information on the game card. Includes the start date, end date, and hours played of game.
 Game.prototype.writeInfoSecond = function() {
 
     if(!this.endDate) {
@@ -121,6 +123,7 @@ function displayGames() {
 
 
 // Color codes the game cards depending on platform (crimson for switch, cobalt for ps4, etc.).
+// Currently not sure of how to implement this into the current UI and is therefore commented out for the time being.
 
 //        if(gameInfoContainer.textContent.includes('Platform: Switch')) {
 //            gameSquare.style.cssText = 'background-color: #E70009';
@@ -182,6 +185,7 @@ function displayGames() {
             notesDiv.classList.toggle('display-none');
         });
 
+        // Updates the notes value for the game object in the Firebase realtime database and myLibrary array whenever a single character key is pressed, with the exception of the backspace key.
         notesDiv.addEventListener('keydown', (e) => {
 
             if(e.key === "Backspace") {
@@ -206,8 +210,10 @@ function displayGames() {
     }
 }
 
+// Adds game object to myLibrary array and Firebase realtime database for currently logged in user.
 function addGame(title, genre, platform, status, hours, startDate, endDate, notes) {
 
+    // sets equalsSearch value of new game object.
     let showCard;
     if(allBtn.classList.contains('tab-toggle-text') || nowBtn.classList.contains('tab-toggle-text')) {
         showCard = true
@@ -220,6 +226,7 @@ function addGame(title, genre, platform, status, hours, startDate, endDate, note
     addGameToDb(title, genre, platform, showCard, status, hours, startDate, endDate, notes);
 }
 
+// Takes values from submit game form to add a new game into the library. Resets the input fields as well.
 function submitGame() {
 
     if(titleField.value === "" || listYearField.value === "") {
@@ -248,6 +255,7 @@ function submitGame() {
     }
 }
 
+// Takes values from the edit game form and updates the game's values on the database.
 function editGame() {
 
     if(editStatusField.value === "" && editGenreField.value === "" && editPlatformField.value === "" && editHoursField.value === "" && editStartField.value === "" && editEndField.value === "") {
@@ -300,6 +308,7 @@ function editGame() {
     editFormContainer.classList.toggle('form-toggle-flex');
 }
 
+// Clears the current list of games shown and re-populates it based on current play status tab selected.
 function resetGameList() {
 
     totalHours = 0;
@@ -412,6 +421,7 @@ function resetGameList() {
     displayGames();
 }
 
+// Adds new game submitted to Firebase realtime database.
 function addGameToDb(title, genre, platform, showCard, status, hours, startDate, endDate, notes) {
 
     if(currentUser) {
@@ -442,12 +452,14 @@ function createLibrary(dbLibrary) {
     }
 }
 
+// Scrolls to the top of the page when new game form and edit game form opens up.
 function goToTop() {
 
     document.body.scrollTop = 0; // for Safari.
     document.documentElement.scrollTop = 0; // for Chrome, Firefox, IE, Opera.
 }
 
+// Sorts current games in list by category selected in the category select drop-down menu.
 function sortArrayByCategory(category) {
 
     let sortedArray = [];
